@@ -5,6 +5,8 @@
  */
 package xo_game;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author mai
@@ -27,52 +29,110 @@ public class user_profile extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        play_button_userprofile = new javax.swing.JButton();
+        exit_label = new javax.swing.JLabel();
+        pp_label = new javax.swing.JLabel();
+        camera_label = new javax.swing.JLabel();
+        history_userprofile = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
-        jLabel1.setText("Score");
+        jPanel1.setBackground(new java.awt.Color(86, 0, 39));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 2, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 51, 51));
-        jButton1.setText("Start New Game");
+        play_button_userprofile.setBackground(new java.awt.Color(255, 255, 255));
+        play_button_userprofile.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        play_button_userprofile.setForeground(new java.awt.Color(86, 0, 39));
+        play_button_userprofile.setText("Play");
+        play_button_userprofile.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        play_button_userprofile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                play_button_userprofileActionPerformed(evt);
+            }
+        });
+        jPanel1.add(play_button_userprofile, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 200, 50));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
-        jLabel2.setText("Name");
+        exit_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-exit-sign-20.png"))); // NOI18N
+        exit_label.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exit_labelMouseClicked(evt);
+            }
+        });
+        jPanel1.add(exit_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, -1, -1));
+
+        pp_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/user_profile.png"))); // NOI18N
+        jPanel1.add(pp_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 90, 90));
+
+        camera_label.setBackground(new java.awt.Color(204, 204, 204));
+        camera_label.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        camera_label.setForeground(new java.awt.Color(204, 204, 204));
+        camera_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-camera-20.png"))); // NOI18N
+        camera_label.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                camera_labelMouseClicked(evt);
+            }
+        });
+        jPanel1.add(camera_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 20, 30));
+
+        history_userprofile.setBackground(new java.awt.Color(255, 255, 255));
+        history_userprofile.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        history_userprofile.setForeground(new java.awt.Color(86, 0, 39));
+        history_userprofile.setText("History");
+        history_userprofile.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        history_userprofile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                history_userprofileActionPerformed(evt);
+            }
+        });
+        jPanel1.add(history_userprofile, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 200, 50));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/circle-cropped.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 250, 260));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(186, 186, 186)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(159, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(jLabel2)
-                .addGap(47, 47, 47)
-                .addComponent(jLabel1)
-                .addGap(48, 48, 48)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void play_button_userprofileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_play_button_userprofileActionPerformed
+        //TODO add your handling code here:
+        //go to sign up form
+        game_modes gm = new game_modes();
+        gm.setVisible(true);
+
+    }//GEN-LAST:event_play_button_userprofileActionPerformed
+
+    private void exit_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exit_labelMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_exit_labelMouseClicked
+
+    private void history_userprofileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_history_userprofileActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_history_userprofileActionPerformed
+
+    private void camera_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_camera_labelMouseClicked
+        // TODO add your handling code here:
+        
+       // ImageIcon newIcon = new ImageIcon(getClass().getResource("/user-female.png"));
+        // pp_label.setIcon(newIcon);
+        
+        String imageLocation = "E:\\ITI\\Java\\XO Project\\XO_GAME" ;
+        pp_label.setIcon(new ImageIcon(imageLocation));
+    }//GEN-LAST:event_camera_labelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -110,8 +170,12 @@ public class user_profile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel camera_label;
+    private javax.swing.JLabel exit_label;
+    private javax.swing.JButton history_userprofile;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton play_button_userprofile;
+    private javax.swing.JLabel pp_label;
     // End of variables declaration//GEN-END:variables
 }

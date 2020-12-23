@@ -29,24 +29,54 @@ public class Start extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        exit_label = new javax.swing.JLabel();
+        about_us_label_start = new javax.swing.JLabel();
+        log_in_button_start = new javax.swing.JButton();
+        sign_up_button_start = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 0, 0));
-        jLabel1.setText("Welcome To XO Game");
+        jPanel1.setBackground(new java.awt.Color(186, 79, 84));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setText("Log In");
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/circle-cropped.png"))); // NOI18N
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton2.setText("Register");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        exit_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-exit-sign-20.png"))); // NOI18N
+        exit_label.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exit_labelMouseClicked(evt);
+            }
+        });
+
+        about_us_label_start.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        about_us_label_start.setForeground(new java.awt.Color(204, 204, 204));
+        about_us_label_start.setText("About Us");
+        about_us_label_start.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                about_us_label_startMouseClicked(evt);
+            }
+        });
+
+        log_in_button_start.setBackground(new java.awt.Color(255, 255, 255));
+        log_in_button_start.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        log_in_button_start.setForeground(new java.awt.Color(186, 79, 84));
+        log_in_button_start.setText("Log In");
+        log_in_button_start.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        log_in_button_start.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                log_in_button_startActionPerformed(evt);
+            }
+        });
+
+        sign_up_button_start.setBackground(new java.awt.Color(255, 255, 255));
+        sign_up_button_start.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        sign_up_button_start.setForeground(new java.awt.Color(186, 79, 84));
+        sign_up_button_start.setText("Sign Up");
+        sign_up_button_start.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        sign_up_button_start.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sign_up_button_startActionPerformed(evt);
             }
         });
 
@@ -54,23 +84,38 @@ public class Start extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(271, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(145, 145, 145))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(189, 189, 189)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                .addComponent(exit_label))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(270, 270, 270)
+                        .addComponent(about_us_label_start, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(246, 246, 246)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(sign_up_button_start, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(log_in_button_start, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(93, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(88, 88, 88)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(88, 88, 88))
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(log_in_button_start, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(sign_up_button_start, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(about_us_label_start)
+                .addGap(23, 23, 23))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(exit_label, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -85,14 +130,32 @@ public class Start extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void exit_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exit_labelMouseClicked
         // TODO add your handling code here:
-        Regist reg =new Regist();
+        System.exit(0);
+    }//GEN-LAST:event_exit_labelMouseClicked
+
+    private void about_us_label_startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_about_us_label_startMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_about_us_label_startMouseClicked
+
+    private void log_in_button_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_log_in_button_startActionPerformed
+        //TODO add your handling code here:
+        //go to sign up form
+        LogIn login = new LogIn();
+        login.setVisible(true);
+        
+    }//GEN-LAST:event_log_in_button_startActionPerformed
+
+    private void sign_up_button_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sign_up_button_startActionPerformed
+        //TODO add your handling code here:
+        //go to sign up form
+        Regist reg = new Regist();
         reg.setVisible(true);
-       
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_sign_up_button_startActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,9 +193,11 @@ public class Start extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel about_us_label_start;
+    private javax.swing.JLabel exit_label;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton log_in_button_start;
+    private javax.swing.JButton sign_up_button_start;
     // End of variables declaration//GEN-END:variables
 }

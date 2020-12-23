@@ -111,7 +111,7 @@ public class Regist extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel2.setBackground(new java.awt.Color(74, 31, 61));
+        jPanel2.setBackground(new java.awt.Color(120, 0, 46));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/circle-cropped.png"))); // NOI18N
 
@@ -189,7 +189,7 @@ public class Regist extends javax.swing.JFrame {
                 name_txt_signupFocusLost(evt);
             }
         });
-        jPanel3.add(name_txt_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 190, 30));
+        jPanel3.add(name_txt_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 190, 30));
         jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 190, 10));
 
         user_name_txt_signup.setBackground(new java.awt.Color(186, 79, 84));
@@ -206,7 +206,7 @@ public class Regist extends javax.swing.JFrame {
                 user_name_txt_signupFocusLost(evt);
             }
         });
-        jPanel3.add(user_name_txt_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 190, 30));
+        jPanel3.add(user_name_txt_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 190, 30));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 190, 10));
 
         password_txt_signup.setBackground(new java.awt.Color(186, 79, 84));
@@ -311,7 +311,7 @@ public class Regist extends javax.swing.JFrame {
                 create_password_text_signupActionPerformed(evt);
             }
         });
-        jPanel3.add(create_password_text_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 210, -1));
+        jPanel3.add(create_password_text_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 210, 40));
 
         confirm_password_text_signup.setBackground(new java.awt.Color(186, 79, 84));
         confirm_password_text_signup.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -331,7 +331,7 @@ public class Regist extends javax.swing.JFrame {
                 confirm_password_text_signupActionPerformed(evt);
             }
         });
-        jPanel3.add(confirm_password_text_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 210, -1));
+        jPanel3.add(confirm_password_text_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 210, 40));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

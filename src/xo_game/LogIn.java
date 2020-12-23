@@ -54,7 +54,7 @@ public class LogIn extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        jPanel2.setBackground(new java.awt.Color(74, 31, 61));
+        jPanel2.setBackground(new java.awt.Color(120, 0, 46));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/circle-cropped.png"))); // NOI18N
 
@@ -97,7 +97,7 @@ public class LogIn extends javax.swing.JFrame {
                 user_name_txt_loginActionPerformed(evt);
             }
         });
-        jPanel3.add(user_name_txt_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 190, 30));
+        jPanel3.add(user_name_txt_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 190, 30));
 
         password_txt_login.setBackground(new java.awt.Color(186, 79, 84));
         password_txt_login.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -111,7 +111,7 @@ public class LogIn extends javax.swing.JFrame {
                 password_txt_loginFocusLost(evt);
             }
         });
-        jPanel3.add(password_txt_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 180, 30));
+        jPanel3.add(password_txt_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 180, 30));
         jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 190, 10));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 190, 20));
 
@@ -188,7 +188,7 @@ public class LogIn extends javax.swing.JFrame {
         });
         jPanel3.add(show_password_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, -1, -1));
 
-        forget_password_label_login.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
+        forget_password_label_login.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         forget_password_label_login.setForeground(new java.awt.Color(204, 204, 204));
         forget_password_label_login.setText("    Forget Password?");
         forget_password_label_login.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -196,7 +196,7 @@ public class LogIn extends javax.swing.JFrame {
                 forget_password_label_loginMouseClicked(evt);
             }
         });
-        jPanel3.add(forget_password_label_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 120, -1));
+        jPanel3.add(forget_password_label_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, 180, -1));
 
         exit_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-exit-sign-20.png"))); // NOI18N
         exit_label.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -240,7 +240,7 @@ public class LogIn extends javax.swing.JFrame {
                 password_to_show_loginActionPerformed(evt);
             }
         });
-        jPanel3.add(password_to_show_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 210, -1));
+        jPanel3.add(password_to_show_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 210, 50));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -275,6 +275,8 @@ public class LogIn extends javax.swing.JFrame {
     private void log_in_button_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_log_in_button_loginActionPerformed
         // TODO add your handling code here:
         //go to user Profile
+        user_profile up = new user_profile();
+        up.setVisible(true);
     }//GEN-LAST:event_log_in_button_loginActionPerformed
 
     private void sign_up_button_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sign_up_button_loginActionPerformed
