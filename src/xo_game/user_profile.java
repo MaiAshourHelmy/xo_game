@@ -30,30 +30,20 @@ public class user_profile extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        play_button_userprofile = new javax.swing.JButton();
         exit_label = new javax.swing.JLabel();
         pp_label = new javax.swing.JLabel();
         camera_label = new javax.swing.JLabel();
-        history_userprofile = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        back_label = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        history_userprofile = new javax.swing.JButton();
+        play_button_userprofile = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(86, 0, 39));
+        jPanel1.setBackground(new java.awt.Color(120, 0, 46));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        play_button_userprofile.setBackground(new java.awt.Color(255, 255, 255));
-        play_button_userprofile.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        play_button_userprofile.setForeground(new java.awt.Color(86, 0, 39));
-        play_button_userprofile.setText("Play");
-        play_button_userprofile.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        play_button_userprofile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                play_button_userprofileActionPerformed(evt);
-            }
-        });
-        jPanel1.add(play_button_userprofile, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 200, 50));
 
         exit_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-exit-sign-20.png"))); // NOI18N
         exit_label.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -77,20 +67,64 @@ public class user_profile extends javax.swing.JFrame {
         });
         jPanel1.add(camera_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 20, 30));
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/circle-cropped.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 250, 260));
+
+        back_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-back-arrow-20.png"))); // NOI18N
+        back_label.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                back_labelMouseClicked(evt);
+            }
+        });
+        jPanel1.add(back_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 20));
+
+        jPanel2.setBackground(new java.awt.Color(186, 79, 84));
+        jPanel2.setPreferredSize(new java.awt.Dimension(306, 388));
+
         history_userprofile.setBackground(new java.awt.Color(255, 255, 255));
-        history_userprofile.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        history_userprofile.setForeground(new java.awt.Color(86, 0, 39));
+        history_userprofile.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        history_userprofile.setForeground(new java.awt.Color(120, 0, 46));
         history_userprofile.setText("History");
-        history_userprofile.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        history_userprofile.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 10));
         history_userprofile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 history_userprofileActionPerformed(evt);
             }
         });
-        jPanel1.add(history_userprofile, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 200, 50));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/circle-cropped.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 250, 260));
+        play_button_userprofile.setBackground(new java.awt.Color(255, 255, 255));
+        play_button_userprofile.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        play_button_userprofile.setForeground(new java.awt.Color(120, 0, 46));
+        play_button_userprofile.setText("Play");
+        play_button_userprofile.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 10));
+        play_button_userprofile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                play_button_userprofileActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(63, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(play_button_userprofile, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(history_userprofile, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(135, 135, 135)
+                .addComponent(history_userprofile, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(play_button_userprofile, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 350, 390));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,7 +134,7 @@ public class user_profile extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -112,6 +146,7 @@ public class user_profile extends javax.swing.JFrame {
         //go to sign up form
         game_modes gm = new game_modes();
         gm.setVisible(true);
+        this.setVisible(false);
 
     }//GEN-LAST:event_play_button_userprofileActionPerformed
 
@@ -133,6 +168,13 @@ public class user_profile extends javax.swing.JFrame {
         String imageLocation = "E:\\ITI\\Java\\XO Project\\XO_GAME" ;
         pp_label.setIcon(new ImageIcon(imageLocation));
     }//GEN-LAST:event_camera_labelMouseClicked
+
+    private void back_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_labelMouseClicked
+        // TODO add your handling code here:
+        LogIn login = new LogIn();
+        login.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_back_labelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -170,11 +212,13 @@ public class user_profile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel back_label;
     private javax.swing.JLabel camera_label;
     private javax.swing.JLabel exit_label;
     private javax.swing.JButton history_userprofile;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JButton play_button_userprofile;
     private javax.swing.JLabel pp_label;
     // End of variables declaration//GEN-END:variables

@@ -28,6 +28,9 @@ public class game_modes extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        back_label = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         exit_label = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         play_button_userprofile = new javax.swing.JButton();
@@ -40,6 +43,39 @@ public class game_modes extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(186, 79, 84));
 
+        jPanel2.setBackground(new java.awt.Color(120, 0, 46));
+        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
+
+        back_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-back-arrow-20.png"))); // NOI18N
+        back_label.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                back_labelMouseClicked(evt);
+            }
+        });
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/circle-cropped.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(back_label)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(back_label)
+                .addGap(36, 36, 36)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 72, Short.MAX_VALUE))
+        );
+
         exit_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-exit-sign-20.png"))); // NOI18N
         exit_label.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -47,15 +83,16 @@ public class game_modes extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Select One Mode");
 
         play_button_userprofile.setBackground(new java.awt.Color(255, 255, 255));
-        play_button_userprofile.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        play_button_userprofile.setForeground(new java.awt.Color(86, 0, 39));
+        play_button_userprofile.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        play_button_userprofile.setForeground(new java.awt.Color(120, 0, 46));
         play_button_userprofile.setText("Play With Computer");
-        play_button_userprofile.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        play_button_userprofile.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 10));
         play_button_userprofile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 play_button_userprofileActionPerformed(evt);
@@ -63,10 +100,11 @@ public class game_modes extends javax.swing.JFrame {
         });
 
         play_button_userprofile1.setBackground(new java.awt.Color(255, 255, 255));
-        play_button_userprofile1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        play_button_userprofile1.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         play_button_userprofile1.setForeground(new java.awt.Color(86, 0, 39));
         play_button_userprofile1.setText("Play On The Same Machine");
-        play_button_userprofile1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        play_button_userprofile1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 10));
+        play_button_userprofile1.setPreferredSize(new java.awt.Dimension(159, 37));
         play_button_userprofile1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 play_button_userprofile1ActionPerformed(evt);
@@ -74,10 +112,11 @@ public class game_modes extends javax.swing.JFrame {
         });
 
         play_button_userprofile2.setBackground(new java.awt.Color(255, 255, 255));
-        play_button_userprofile2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        play_button_userprofile2.setForeground(new java.awt.Color(86, 0, 39));
+        play_button_userprofile2.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        play_button_userprofile2.setForeground(new java.awt.Color(120, 0, 46));
         play_button_userprofile2.setText("Play With Different Machine");
-        play_button_userprofile2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        play_button_userprofile2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 10));
+        play_button_userprofile2.setPreferredSize(new java.awt.Dimension(159, 37));
         play_button_userprofile2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 play_button_userprofile2ActionPerformed(evt);
@@ -88,40 +127,42 @@ public class game_modes extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(156, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(play_button_userprofile2, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-                            .addComponent(play_button_userprofile1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(play_button_userprofile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(150, 150, 150))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addComponent(exit_label))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(124, 124, 124)))
-                .addComponent(exit_label)
-                .addGap(102, 102, 102))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(play_button_userprofile2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(play_button_userprofile1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(play_button_userprofile, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(exit_label, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addComponent(play_button_userprofile, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addComponent(play_button_userprofile1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(play_button_userprofile2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(exit_label, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(play_button_userprofile, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(26, 26, 26)
+                        .addComponent(play_button_userprofile1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(play_button_userprofile2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(118, 118, 118))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 390));
 
         pack();
         setLocationRelativeTo(null);
@@ -149,6 +190,13 @@ public class game_modes extends javax.swing.JFrame {
         //go to sign up form
   
     }//GEN-LAST:event_play_button_userprofile2ActionPerformed
+
+    private void back_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_labelMouseClicked
+        // TODO add your handling code here:
+        user_profile up = new user_profile();
+        up.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_back_labelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -186,9 +234,12 @@ public class game_modes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel back_label;
     private javax.swing.JLabel exit_label;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JButton play_button_userprofile;
     private javax.swing.JButton play_button_userprofile1;
     private javax.swing.JButton play_button_userprofile2;
