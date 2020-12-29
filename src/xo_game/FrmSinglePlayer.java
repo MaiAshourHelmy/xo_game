@@ -10,7 +10,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author abdelrahman
@@ -24,7 +23,7 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
     int index = 0;
     int scorePlayerOne = 0;
     int scorePlayerTwo = 0;
-    boolean f = false;
+    boolean isFull = false;
 
     public FrmSinglePlayer() {
         initComponents();
@@ -59,6 +58,7 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
 
         if (one != "" && two != "" && three != "" && four != "" && five != "" && six != "" && seven != "" && eight != "" && nine != "") {
             JOptionPane.showMessageDialog(this, "The match has been drawn !!!", "Match result", JOptionPane.INFORMATION_MESSAGE);
+            isFull = true;
             resetLabels();
         }
 
@@ -77,18 +77,19 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
         jLabel9.setText("");
 
         g.resetBoard();
-
         g.chooseAplayer(lTurn);
 
     }
 
     private void xWins() {
         JOptionPane.showMessageDialog(this, "X WINS", "Winner", JOptionPane.INFORMATION_MESSAGE);
+        isFull = true;
         resetLabels();
     }
 
     private void oWins() {
         JOptionPane.showMessageDialog(this, "O WINS", "Winner", JOptionPane.INFORMATION_MESSAGE);
+        isFull = true;
         resetLabels();
     }
 
@@ -111,8 +112,6 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
                 scorePlayerTwo += 1;
                 lscorePlayer2.setText(String.valueOf(scorePlayerTwo));
             }
-            jPanelBoard.setEnabled(false);
-            //   WinnerGif.setVisible(true);
         }
 
         g.chooseAplayer(lTurn);
@@ -121,17 +120,22 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
 
     private void playRopot() {
 
-        while (true) {
-            int position = g.genRandmInt();
-            System.out.println(position);
+        if (!isFull) {
+            while (true) {
+                int position = g.genRandmInt();
+                System.out.println(position);
 
-            if (g.indexIsEmptyOrNot(position)) {
-                setTextInBtn(position);
-                System.out.println("empty");
-                break;
-            } else {
-                System.out.println("no empty");
+                if (g.indexIsEmptyOrNot(position)) {
+                    setTextInBtn(position);
+                    //System.out.println("empty");
+                    break;
+                } else {
+
+                    // System.out.println("no empty");
+                }
+                isFull = false;
             }
+
         }
     }
 
@@ -479,254 +483,49 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
 
-        index = Game.getIndexFromBoard(jLabel1.getName());
-
-        if (g.setBoard(index, g.getCurrentPlayer())) {
-            jLabel1.setText(g.getBoard(index).toString());
-        }
-
-        if (g.hasWinner()) {
-            System.out.println("player " + g.getCurrentPlayer());
-            if (g.getCurrentPlayer().toString() == "X") {
-                xWins();
-                scorePlayerOne += 1;
-                lscorePlayer1.setText(String.valueOf(scorePlayerOne));
-            } else {
-                oWins();
-                scorePlayerTwo += 1;
-                lscorePlayer2.setText(String.valueOf(scorePlayerTwo));
-            }
-            jPanelBoard.setEnabled(false);
-            //   WinnerGif.setVisible(true);
-        }
-
-        g.chooseAplayer(lTurn);
-        playRopot();
-        ReDraw();
+        playing(jLabel1);
     }//GEN-LAST:event_jLabel1MouseClicked
 
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
 
-        index = Game.getIndexFromBoard(jLabel2.getName());
-
-        if (g.setBoard(index, g.getCurrentPlayer())) {
-            jLabel2.setText(g.getBoard(index).toString());
-        }
-
-        if (g.hasWinner()) {
-            System.out.println("player " + g.getCurrentPlayer());
-            if (g.getCurrentPlayer().toString() == "X") {
-                xWins();
-                scorePlayerOne += 1;
-                lscorePlayer1.setText(String.valueOf(scorePlayerOne));
-            } else {
-                oWins();
-                scorePlayerTwo += 1;
-                lscorePlayer2.setText(String.valueOf(scorePlayerTwo));
-            }
-            jPanelBoard.setEnabled(false);
-            //   WinnerGif.setVisible(true);
-        }
-
-        g.chooseAplayer(lTurn);
-        playRopot();
-        ReDraw();
+        playing(jLabel2);
     }//GEN-LAST:event_jLabel2MouseClicked
 
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        index = Game.getIndexFromBoard(jLabel3.getName());
-
-        if (g.setBoard(index, g.getCurrentPlayer())) {
-            jLabel3.setText(g.getBoard(index).toString());
-        }
-
-        if (g.hasWinner()) {
-            System.out.println("player " + g.getCurrentPlayer());
-            if (g.getCurrentPlayer().toString() == "X") {
-                xWins();
-                scorePlayerOne += 1;
-                lscorePlayer1.setText(String.valueOf(scorePlayerOne));
-            } else {
-                oWins();
-                scorePlayerTwo += 1;
-                lscorePlayer2.setText(String.valueOf(scorePlayerTwo));
-            }
-            jPanelBoard.setEnabled(false);
-            //   WinnerGif.setVisible(true);
-        }
-
-        g.chooseAplayer(lTurn);
-        playRopot();
-        ReDraw();
+        playing(jLabel3);
     }//GEN-LAST:event_jLabel3MouseClicked
 
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        index = Game.getIndexFromBoard(jLabel4.getName());
-
-        if (g.setBoard(index, g.getCurrentPlayer())) {
-            jLabel4.setText(g.getBoard(index).toString());
-        }
-
-        if (g.hasWinner()) {
-            System.out.println("player " + g.getCurrentPlayer());
-            if (g.getCurrentPlayer().toString() == "X") {
-                xWins();
-                scorePlayerOne += 1;
-                lscorePlayer1.setText(String.valueOf(scorePlayerOne));
-            } else {
-                oWins();
-                scorePlayerTwo += 1;
-                lscorePlayer2.setText(String.valueOf(scorePlayerTwo));
-            }
-            jPanelBoard.setEnabled(false);
-            //   WinnerGif.setVisible(true);
-        }
-
-        g.chooseAplayer(lTurn);
-        playRopot();
-        ReDraw();
+        playing(jLabel4);
     }//GEN-LAST:event_jLabel4MouseClicked
 
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        index = Game.getIndexFromBoard(jLabel5.getName());
-
-        if (g.setBoard(index, g.getCurrentPlayer())) {
-            jLabel5.setText(g.getBoard(index).toString());
-        }
-
-        if (g.hasWinner()) {
-            System.out.println("player " + g.getCurrentPlayer());
-            if (g.getCurrentPlayer().toString() == "X") {
-                xWins();
-                scorePlayerOne += 1;
-                lscorePlayer1.setText(String.valueOf(scorePlayerOne));
-            } else {
-                oWins();
-                scorePlayerTwo += 1;
-                lscorePlayer2.setText(String.valueOf(scorePlayerTwo));
-            }
-            jPanelBoard.setEnabled(false);
-            //   WinnerGif.setVisible(true);
-        }
-
-        g.chooseAplayer(lTurn);
-        playRopot();
-        ReDraw();
+        playing(jLabel5);
     }//GEN-LAST:event_jLabel5MouseClicked
 
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        index = Game.getIndexFromBoard(jLabel6.getName());
-
-        if (g.setBoard(index, g.getCurrentPlayer())) {
-            jLabel6.setText(g.getBoard(index).toString());
-        }
-        if (g.hasWinner()) {
-            System.out.println("player " + g.getCurrentPlayer());
-            if (g.getCurrentPlayer().toString() == "X") {
-                xWins();
-                scorePlayerOne += 1;
-                lscorePlayer1.setText(String.valueOf(scorePlayerOne));
-
-            } else {
-                oWins();
-                scorePlayerTwo += 1;
-                lscorePlayer2.setText(String.valueOf(scorePlayerTwo));
-            }
-            jPanelBoard.setEnabled(false);
-            //   WinnerGif.setVisible(true);
-        }
-
-        g.chooseAplayer(lTurn);
-        playRopot();
-        ReDraw();
+        playing(jLabel6);
     }//GEN-LAST:event_jLabel6MouseClicked
 
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        index = Game.getIndexFromBoard(jLabel8.getName());
-
-        if (g.setBoard(index, g.getCurrentPlayer())) {
-            jLabel8.setText(g.getBoard(index).toString());
-        }
-
-        if (g.hasWinner()) {
-            System.out.println("player " + g.getCurrentPlayer());
-            if (g.getCurrentPlayer().toString() == "X") {
-                xWins();
-                scorePlayerOne += 1;
-                lscorePlayer1.setText(String.valueOf(scorePlayerOne));
-            } else {
-                oWins();
-                scorePlayerTwo += 1;
-                lscorePlayer2.setText(String.valueOf(scorePlayerTwo));
-            }
-            jPanelBoard.setEnabled(false);
-            //   WinnerGif.setVisible(true);
-        }
-        g.chooseAplayer(lTurn);
-        playRopot();
-        ReDraw();
+        playing(jLabel8);
 
     }//GEN-LAST:event_jLabel8MouseClicked
 
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        index = Game.getIndexFromBoard(jLabel9.getName());
-
-        if (g.setBoard(index, g.getCurrentPlayer())) {
-            jLabel9.setText(g.getBoard(index).toString());
-        }
-        if (g.hasWinner()) {
-            System.out.println("player " + g.getCurrentPlayer());
-            if (g.getCurrentPlayer().toString() == "X") {
-                xWins();
-                scorePlayerOne += 1;
-                lscorePlayer1.setText(String.valueOf(scorePlayerOne));
-            } else {
-                oWins();
-                scorePlayerTwo += 1;
-                lscorePlayer2.setText(String.valueOf(scorePlayerTwo));
-            }
-            jPanelBoard.setEnabled(false);
-            //   WinnerGif.setVisible(true);
-        }
-
-        g.chooseAplayer(lTurn);
-        playRopot();
-        ReDraw();
+        playing(jLabel9);
     }//GEN-LAST:event_jLabel9MouseClicked
 
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        index = Game.getIndexFromBoard(jLabel7.getName());
-
-        if (g.setBoard(index, g.getCurrentPlayer())) {
-            jLabel7.setText(g.getBoard(index).toString());
-        }
-
-        if (g.hasWinner()) {
-            System.out.println("player " + g.getCurrentPlayer());
-            if (g.getCurrentPlayer().toString() == "X") {
-                xWins();
-                scorePlayerOne += 1;
-                lscorePlayer1.setText(String.valueOf(scorePlayerOne));
-            } else {
-                oWins();
-                scorePlayerTwo += 1;
-                lscorePlayer2.setText(String.valueOf(scorePlayerTwo));
-            }
-            jPanelBoard.setEnabled(false);
-            //   WinnerGif.setVisible(true);
-        }
-
-        g.chooseAplayer(lTurn);
-        playRopot();
-        ReDraw();
+        playing(jLabel7);
     }//GEN-LAST:event_jLabel7MouseClicked
 
 
@@ -738,6 +537,38 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void playing(JLabel label) {
+
+        index = Game.getIndexFromBoard(label.getName());
+
+        if (g.setBoard(index, g.getCurrentPlayer())) {
+            label.setText(g.getBoard(index).toString());
+        }
+
+        if (g.hasWinner()) {
+            System.out.println("player " + g.getCurrentPlayer());
+            if (g.getCurrentPlayer().toString() == "X") {
+                xWins();
+                scorePlayerOne += 1;
+                lscorePlayer1.setText(String.valueOf(scorePlayerOne));
+
+            } else {
+                oWins();
+                scorePlayerTwo += 1;
+                lscorePlayer2.setText(String.valueOf(scorePlayerTwo));
+                g.setCurrentPlayer(Game.Board.O);
+            }
+
+            g.chooseAplayer(lTurn);
+            ReDraw();
+        } else {
+
+            g.chooseAplayer(lTurn);
+            playRopot();
+            ReDraw();
+        }
+    }
 
     /**
      * @param args the command line arguments
