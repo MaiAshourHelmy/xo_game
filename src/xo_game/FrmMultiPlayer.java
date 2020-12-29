@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package xoabdo;
+package xo_game;
 
 import javax.swing.JOptionPane;
-import model.Game;
+
 
 /**
  *

@@ -7,6 +7,11 @@ package xo_game;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.net.Socket;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,7 +22,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import org.apache.derby.jdbc.ClientDriver;
+;
 import xo_game.LogIn;
 import xo_game.Start;
 
@@ -25,21 +30,22 @@ import xo_game.Start;
  *
  * @author mai
  */
-public class Regist extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Regist
-     */
-    Connection connection;
-    PreparedStatement pst;
-    ResultSet rs;
-    Statement stmt = null;
 
-    DBConnection dbCon = new DBConnection();
+public class Regist extends javax.swing.JFrame implements Runnable {
+
+    IntializeSocket intializeSocket;
+    String replyMsg = "1";
+    Thread th;
 
     public Regist() {
-        initComponents();
-
+       
+            initComponents();
+            
+            intializeSocket = new IntializeSocket();
+            th = new Thread(this);
+            th.start();
+       
         invisible_password_label.setVisible(false);
         invisible_password_label1.setVisible(false);
         password_txt_signup.setVisible(false);
@@ -48,16 +54,9 @@ public class Regist extends javax.swing.JFrame {
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 System.out.println("Bye Bye");
-//                try {
-//                    //connection.close();
-//                    //stmt.close();
-//                   // pst.close();
-//
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(Regist.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//
-            }
+              
+                     intializeSocket.getPs().println("exist");
+  }
 
         });
 
@@ -100,7 +99,6 @@ public class Regist extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         jPanel2.setBackground(new java.awt.Color(120, 0, 46));
 
@@ -354,7 +352,6 @@ public class Regist extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void back_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_labelMouseClicked
@@ -370,70 +367,66 @@ public class Regist extends javax.swing.JFrame {
     }//GEN-LAST:event_exit_labelMouseClicked
 
     private void submit_button_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submit_button_signupActionPerformed
-        //TODO add your handling code here:
-        //go to sign up form
-     
+        String name = name_txt_signup.getText();
+        String user_name = user_name_txt_signup.getText();
+        String password = password_txt_signup.getText();
+        String confirmPassword = String.valueOf(confirm_password_text_signup.getText());
+
+        if (name == "") {
+            JOptionPane.showMessageDialog(null, " Name is Mandatory");
+            return;
+        }
+
+        if (user_name == "") {
+            JOptionPane.showMessageDialog(null, " User Name is Mandatory");
+            return;
+        }
+        if (password == "") {
+            JOptionPane.showMessageDialog(null, " Password is Mandatory");
+            return;
+        }
+        if (password.length() < 6) {
+            JOptionPane.showMessageDialog(null, " password must be more than 6 characters");
+            return;
+        }
+        if (password.length() > 20) {
+            JOptionPane.showMessageDialog(null, " password must be less than 20 characters");
+            return;
+        }
+        /*if (confirmPassword == "") {
+            JOptionPane.showMessageDialog(null, " Confirm Password is Mandatory");
+            return;
+        }
+        if (password != confirmPassword) {
+            JOptionPane.showMessageDialog(null, "Confirm Password must equals Password ");
+            return;
+        }*/
+
+        intializeSocket.getPs().println("signUp" + "#" + name + "#" + user_name + "#" + password);
 
         try {
+            replyMsg = intializeSocket.getDis().readLine();
 
-            String name = name_txt_signup.getText();
-            String user_name = user_name_txt_signup.getText();
-            String password = password_txt_signup.getText();
-            String confirmPassword = String.valueOf(confirm_password_text_signup.getText());
-            
-         
-            if(name == "")
-            {
-                JOptionPane.showMessageDialog(null, " Name is Mandatory");
-                return;
-            }
-           
-            if(user_name == "")
-            {
-                JOptionPane.showMessageDialog(null, " User Name is Mandatory");
-                return;
-            }
-             if(password == "")
-            {
-                JOptionPane.showMessageDialog(null, " Password is Mandatory");
-                return;
-            }
-             if (password.length()<6)
-             {
-                 JOptionPane.showMessageDialog(null, " password must be more than 6 characters");
-                return;
-             }
-               if (password.length()>20)
-             {
-                 JOptionPane.showMessageDialog(null, " password must be less than 20 characters");
-                return;
-             }
-              if(confirmPassword == "")
-            {
-                JOptionPane.showMessageDialog(null, " Confirm Password is Mandatory");
-                return;
-            }
-            if(password!=confirmPassword)
-            {
-                 JOptionPane.showMessageDialog(null, "Confirm Password must equals Password ");
-                return;
-            }
-            
-            
-          
-            dbCon.insertDB(name,user_name,password);
-               LogIn login = new LogIn();
-               login.setVisible(true);
-               this.setVisible(false);
-             } catch (SQLException ex) {
-            ex.printStackTrace();
+        } catch (IOException ex) {
+            Logger.getLogger(Regist.class.getName()).log(Level.SEVERE, null, ex);
         }
-           
-        
+        if (replyMsg.equals("0")) {
+            LogIn login = new LogIn();
+            login.setVisible(true);
+            this.setVisible(false);
+        } else {
+            System.out.println("Exist User Name");
 
-       
+        }
+
 
     }//GEN-LAST:event_submit_button_signupActionPerformed
+
+    @Override
+    public void run() {
+       
+    }
+
 
     private void reset_button_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reset_button_signupActionPerformed
         // TODO add your handling code here:
@@ -655,4 +648,5 @@ public class Regist extends javax.swing.JFrame {
     private javax.swing.JButton submit_button_signup;
     private javax.swing.JTextField user_name_txt_signup;
     // End of variables declaration//GEN-END:variables
+
 }
