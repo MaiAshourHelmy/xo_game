@@ -45,8 +45,19 @@ public class Game {
         }
 
     }
+    
+//    // thread when player tries a move
+//    public synchronized boolean move(int location, Player player) {
+//        if (player == currentPlayer && board[location] == null) {
+//            board[location] = currentPlayer;
+//            currentPlayer = currentPlayer.opponent;
+//            currentPlayer.otherPlayerMoved(location);
+//            return true;
+//        }
+//        return false;
+//    }
 
-    public boolean fullBoard() {
+    public boolean isFullBoard() {
 
         // reset values of array
         for (int i = 0; i < 9; i++) {

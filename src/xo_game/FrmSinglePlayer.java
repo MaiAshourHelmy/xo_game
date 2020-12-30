@@ -93,7 +93,7 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
         resetLabels();
     }
 
-    private void setText(JLabel label) {
+    private void playingRobot(JLabel label) {
 
         index = Game.getIndexFromBoard(label.getName());
 
@@ -120,71 +120,74 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
 
     private void playRopot() {
 
-        if (!isFull) {
-            while (true) {
-                int position = g.genRandmInt();
-                System.out.println(position);
+        while (true) {
+            int position = g.genRandmInt();
+            System.out.println(position);
 
-                if (g.indexIsEmptyOrNot(position)) {
-                    setTextInBtn(position);
-                    //System.out.println("empty");
-                    break;
-                } else {
+            if (g.indexIsEmptyOrNot(position)) {
+                setXORO(position);
+                //System.out.println("empty");
+                break;
+            } else {
+           
+                    if(!g.indexIsEmptyOrNot(0) &&!g.indexIsEmptyOrNot(1) &&!g.indexIsEmptyOrNot(2) &&!g.indexIsEmptyOrNot(3) &&!g.indexIsEmptyOrNot(4) 
+                            &&!g.indexIsEmptyOrNot(5) &&!g.indexIsEmptyOrNot(6) &&!g.indexIsEmptyOrNot(7) &&!g.indexIsEmptyOrNot(8)){
+                        break;
+                    }
+                
 
-                    // System.out.println("no empty");
-                }
-                isFull = false;
             }
 
         }
+
     }
 
-    private void setTextInBtn(int position) {
+    private void setXORO(int position) {
 
         switch (position) {
             case 0:
                 if (jLabel1.getText().toString() == "") {
-                    setText(jLabel1);
+                    playingRobot(jLabel1);
                 }
                 break;
             case 1:
                 if (jLabel2.getText().toString() == "") {
-                    setText(jLabel2);
+                    playingRobot(jLabel2);
                 }
                 break;
             case 2:
                 if (jLabel3.getText().toString() == "") {
-                    setText(jLabel3);
+                    playingRobot(jLabel3);
                 }
                 break;
             case 3:
                 if (jLabel4.getText().toString() == "") {
-                    setText(jLabel4);
+                    playingRobot(jLabel4);
                 }
                 break;
             case 4:
                 if (jLabel5.getText().toString() == "") {
-                    setText(jLabel5);
+                    playingRobot(jLabel5);
                 }
                 break;
             case 5:
                 if (jLabel6.getText().toString() == "") {
-                    setText(jLabel6);
+                    playingRobot(jLabel6);
                 }
                 break;
             case 6:
                 if (jLabel7.getText().toString() == "") {
-                    setText(jLabel7);
+                    playingRobot(jLabel7);
                 }
                 break;
             case 7:
                 if (jLabel8.getText().toString() == "") {
-                    setText(jLabel8);
+                    playingRobot(jLabel8);
                 }
                 break;
             case 8:
                 if (jLabel9.getText().toString() == "") {
-                    setText(jLabel9);
+                    playingRobot(jLabel9);
                 }
                 break;
         }
