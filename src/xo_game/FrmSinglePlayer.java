@@ -6,6 +6,10 @@
 package xo_game;
 
 import java.awt.Color;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -24,11 +28,26 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
     int scorePlayerOne = 0;
     int scorePlayerTwo = 0;
     boolean isFull = false;
+    String nameOfPlayer1 = "";
+    IntializeSocket socket;
+    ArrayList<Record> record;
 
     public FrmSinglePlayer() {
         initComponents();
         setNameLabels();
+        socket = new IntializeSocket();
+        record = new ArrayList<>();
         lTurn.setText("Player one turn");
+        socket.getPs().println("nameOfPlayer#" + Player.getUserName());
+        try {
+            nameOfPlayer1 = socket.getDis().readLine();
+            System.out.println("nameOfPlayer1 = " + nameOfPlayer1);
+            Player.setName(nameOfPlayer1);
+            lPlayer3.setText(Player.getName());
+            lPlayer1.setText("Computer");
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     private void setNameLabels() {
@@ -81,14 +100,27 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
 
     }
 
+    private void registerMovesInDb() {
+        String index = "";
+        String value = "";
+        socket.getPs().println("game#" + Player.getUserName() + "#" + "computer#" + scorePlayerOne + "#" + scorePlayerTwo);
+        for (int i = 0; i < record.size(); i++) {
+            index += String.valueOf(record.get(i).getIndex());
+            value += String.valueOf(record.get(i).getValue());
+        }
+        socket.getPs().println("insertRecord#" + index + "#" + value);
+    }
+
     private void xWins() {
         JOptionPane.showMessageDialog(this, "X WINS", "Winner", JOptionPane.INFORMATION_MESSAGE);
+        registerMovesInDb();
         isFull = true;
         resetLabels();
     }
 
     private void oWins() {
         JOptionPane.showMessageDialog(this, "O WINS", "Winner", JOptionPane.INFORMATION_MESSAGE);
+        registerMovesInDb();
         isFull = true;
         resetLabels();
     }
@@ -122,19 +154,20 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
 
         while (true) {
             int position = g.genRandmInt();
-            System.out.println(position);
+            Record r1 = new Record(position, 'O');
+            record.add(r1);
+            System.out.println("index = " + r1.getIndex() + "value = " + r1.getValue());
 
             if (g.indexIsEmptyOrNot(position)) {
                 setXORO(position);
                 //System.out.println("empty");
                 break;
             } else {
-           
-                    if(!g.indexIsEmptyOrNot(0) &&!g.indexIsEmptyOrNot(1) &&!g.indexIsEmptyOrNot(2) &&!g.indexIsEmptyOrNot(3) &&!g.indexIsEmptyOrNot(4) 
-                            &&!g.indexIsEmptyOrNot(5) &&!g.indexIsEmptyOrNot(6) &&!g.indexIsEmptyOrNot(7) &&!g.indexIsEmptyOrNot(8)){
-                        break;
-                    }
-                
+
+                if (!g.indexIsEmptyOrNot(0) && !g.indexIsEmptyOrNot(1) && !g.indexIsEmptyOrNot(2) && !g.indexIsEmptyOrNot(3) && !g.indexIsEmptyOrNot(4)
+                        && !g.indexIsEmptyOrNot(5) && !g.indexIsEmptyOrNot(6) && !g.indexIsEmptyOrNot(7) && !g.indexIsEmptyOrNot(8)) {
+                    break;
+                }
 
             }
 
@@ -542,9 +575,17 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void playing(JLabel label) {
-
+        char value = ' ';
         index = Game.getIndexFromBoard(label.getName());
-
+        Game.Board b =  g.getCurrentPlayer();
+        if(b == Game.Board.X ){
+             value = 'X';
+        }else if (b == Game.Board.O){
+            value = 'O';
+        }
+            Record r1 = new Record(index, value);
+            record.add(r1);
+            System.out.println("index = " + r1.getIndex() + "value = " + r1.getValue());
         if (g.setBoard(index, g.getCurrentPlayer())) {
             label.setText(g.getBoard(index).toString());
         }

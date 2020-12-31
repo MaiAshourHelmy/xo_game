@@ -5,57 +5,130 @@
  */
 package xo_game;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.GridLayout;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
  * @author abdelrahman
  */
-public class FrmMultiPlayer extends javax.swing.JFrame {
+public class RecordJFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NewJFrame
-     */
-    private Game g = new Game();
-    private int index = 0;
-    private int scorePlayerOne = 0;
-    private int scorePlayerTwo = 0;
-    private boolean isFull = false;
-    String nameOfPlayer1 = "";
     IntializeSocket socket;
+    Game g = new Game();
+    int index = 0;
+    int scorePlayerOne = 0;
+    int scorePlayerTwo = 0;
+
+    boolean f = false;
+    String nameOfPlayer1 = "";
+
+    boolean isFull = false;
+    String r = "";
+
     ArrayList<Record> record;
 
-    public FrmMultiPlayer() {
+    public RecordJFrame() {
+        System.out.println("helllo");
         initComponents();
-        setNameLabels();
-        socket = new IntializeSocket();
+      
+       socket = new IntializeSocket();
         record = new ArrayList<>();
+         setNameLabels();
         lTurn.setText("Player one turn");
-        socket.getPs().println("nameOfPlayer#"+Player.getUserName());
-         try {
-          nameOfPlayer1 = socket.getDis().readLine();
+        socket.getPs().println("nameOfPlayer#" + Player.getUserName());
+        try {
+            nameOfPlayer1 = socket.getDis().readLine();
             System.out.println("nameOfPlayer1 = " + nameOfPlayer1);
-           lPlayer3.setText(nameOfPlayer1);
-          // lPlayer2.setText("Player 2");
+            Player.setName(nameOfPlayer1);
+            
+            
+            lPlayer3.setText(Player.getName());
+          
+            lPlayer1.setText("Computer");
+            socket.getPs().println("returnRecord");
+            r = socket.getDis().readLine();
+            System.out.println("r = " + r);
+            String[] arr = r.split("#");
+            System.out.println("arr = " + arr[0] + " " + arr[1]);
+            for (int i = 0; i < arr[0].length(); i++) {
+               
+                record.add(new Record(Integer.parseInt(arr[0].charAt(i)+""), arr[1].charAt(i)));
+                 System.out.println("record = " + record.get(i).getIndex());
+             System.out.println("record = " + record.get(i).getValue());
+            }
+           signUp();
+          
         } catch (IOException ex) {
             Logger.getLogger(FrmSinglePlayer.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+
     }
-    private void registerMovesInDb() {
-        String index = "";
-        String value = "";
-        socket.getPs().println("game#" + Player.getUserName() + "#" + "computer#" + scorePlayerOne + "#" + scorePlayerTwo);
-        for (int i = 0; i < record.size(); i++) {
-            index += String.valueOf(record.get(i).getIndex());
-            value += String.valueOf(record.get(i).getValue());
+
+ private void signUp() {
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+               for (int i = 0; i < record.size(); i++) {
+           
+           
+            try {
+                 printRecord(record.get(i).getIndex(), record.get(i).getValue());
+                Thread.sleep(1000);
+                
+            } catch (InterruptedException ex) {
+                Logger.getLogger(RecordJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        socket.getPs().println("insertRecord#" + index + "#" + value);
+            }
+        }).start();
     }
+    
+    private void printRecord(int index, char c) {
+        switch (index) {
+            case 0:
+                jLabel1.setText("" + c);
+                break;
+            case 1:
+                jLabel2.setText("" + c);
+                break;
+            case 2:
+                jLabel3.setText("" + c);
+                break;
+            case 3:
+                jLabel4.setText("" + c);
+                break;
+            case 4:
+                jLabel5.setText("" + c);
+                break;
+            case 5:
+                jLabel6.setText("" + c);
+                break;
+            case 6:
+                jLabel7.setText("" + c);
+                break;
+            case 7:
+                jLabel8.setText("" + c);
+                break;
+            case 8:
+                jLabel9.setText("" + c);
+                break;
+        }
+
+    }
+
     private void setNameLabels() {
 
         jLabel1.setName("1");
@@ -83,6 +156,7 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
 
         if (one != "" && two != "" && three != "" && four != "" && five != "" && six != "" && seven != "" && eight != "" && nine != "") {
             JOptionPane.showMessageDialog(this, "The match has been drawn !!!", "Match result", JOptionPane.INFORMATION_MESSAGE);
+            isFull = true;
             resetLabels();
         }
 
@@ -107,14 +181,126 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
 
     private void xWins() {
         JOptionPane.showMessageDialog(this, "X WINS", "Winner", JOptionPane.INFORMATION_MESSAGE);
-        registerMovesInDb();
+        // String index = "";
+        // String value = "";
+        /*  socket.getPs().println("game#" + Player.getUserName() + "#" + "computer#" + scorePlayerOne + "#" + scorePlayerTwo );
+        for (int i = 0; i < record.size(); i++) {
+            index += String.valueOf(record.get(i).getIndex());
+            value+=String.valueOf(record.get(i).getValue());
+        }
+        socket.getPs().println("insertRecord#" + index + "#" + value);*/
+        isFull = true;
+
         resetLabels();
     }
 
     private void oWins() {
         JOptionPane.showMessageDialog(this, "O WINS", "Winner", JOptionPane.INFORMATION_MESSAGE);
-        registerMovesInDb();
+
+        //  socket.getPs().println("game#" + Player.getUserName() + "#" + "computer#" + scorePlayerOne + "#" + scorePlayerTwo );
+        isFull = true;
+
         resetLabels();
+    }
+
+    private void setText(JLabel label) {
+
+        index = Game.getIndexFromBoard(label.getName());
+
+        if (g.setBoard(index, g.getCurrentPlayer())) {
+            label.setText(g.getBoard(index).toString());
+        }
+
+        if (g.hasWinner()) {
+            System.out.println("player " + g.getCurrentPlayer());
+            if (g.getCurrentPlayer().toString() == "X") {
+                xWins();
+                scorePlayerOne += 1;
+                lscorePlayer1.setText(String.valueOf(scorePlayerOne));
+            } else {
+                oWins();
+                scorePlayerTwo += 1;
+                lscorePlayer2.setText(String.valueOf(scorePlayerTwo));
+            }
+        }
+
+        g.chooseAplayer(lTurn);
+        ReDraw();
+    }
+
+    private void playRopot() {
+
+        if (!isFull) {
+            while (true) {
+                int position = g.genRandmInt();
+                Record r1 = new Record(position, 'O');
+                record.add(r1);
+                System.out.println("index = " + r1.getIndex() + "value = " + r1.getValue());
+
+                if (g.indexIsEmptyOrNot(position)) {
+                    setTextInBtn(position);
+                    //System.out.println("empty");
+                    break;
+                } else {
+
+                    // System.out.println("no empty");
+                }
+                isFull = false;
+            }
+
+        }
+    }
+
+    private void setTextInBtn(int position) {
+
+        switch (position) {
+            case 0:
+                if (jLabel1.getText().toString() == "") {
+                    setText(jLabel1);
+                }
+                break;
+            case 1:
+                if (jLabel2.getText().toString() == "") {
+                    setText(jLabel2);
+                }
+                break;
+            case 2:
+                if (jLabel3.getText().toString() == "") {
+                    setText(jLabel3);
+                }
+                break;
+            case 3:
+                if (jLabel4.getText().toString() == "") {
+                    setText(jLabel4);
+                }
+                break;
+            case 4:
+                if (jLabel5.getText().toString() == "") {
+                    setText(jLabel5);
+                }
+                break;
+            case 5:
+                if (jLabel6.getText().toString() == "") {
+                    setText(jLabel6);
+                }
+                break;
+            case 6:
+                if (jLabel7.getText().toString() == "") {
+                    setText(jLabel7);
+                }
+                break;
+            case 7:
+                if (jLabel8.getText().toString() == "") {
+                    setText(jLabel8);
+                }
+                break;
+            case 8:
+                if (jLabel9.getText().toString() == "") {
+                    setText(jLabel9);
+                }
+                break;
+        }
+
     }
 
     /**
@@ -158,8 +344,6 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(186, 79, 84));
         setMinimumSize(new java.awt.Dimension(611, 388));
-        setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(611, 388));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(120, 0, 46));
@@ -171,7 +355,7 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
         lPlayer1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lPlayer1.setForeground(new java.awt.Color(255, 255, 255));
         lPlayer1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lPlayer1.setText("Player 1");
+        lPlayer1.setText("Computer");
 
         lTurn.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lTurn.setForeground(new java.awt.Color(255, 255, 255));
@@ -185,7 +369,7 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
         lPlayer3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lPlayer3.setForeground(new java.awt.Color(255, 255, 255));
         lPlayer3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lPlayer3.setText("Player 2");
+        lPlayer3.setText("Player 1");
 
         lscorePlayer1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lscorePlayer1.setForeground(new java.awt.Color(255, 255, 255));
@@ -201,7 +385,7 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lPlayer3)
                     .addComponent(lscorePlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addComponent(lTurn)
                 .addGap(118, 118, 118)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -404,54 +588,154 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 610, 290));
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-
+        char value = ' ';
+        int index = Game.getIndexFromBoard(jLabel1.getName());
+        Game.Board b = g.getCurrentPlayer();
+        if (b == Game.Board.X) {
+            value = 'X';
+        } else if (b == Game.Board.O) {
+            value = 'O';
+        }
+        Record r1 = new Record(index, value);
+        record.add(r1);
+        System.out.println("index = " + r1.getIndex() + "value = " + r1.getValue());
+        /* if (g.setBoard(index, g.getCurrentPlayer())) {
+            label.setText(g.getBoard(index).toString());
+        }*/
         playing(jLabel1);
     }//GEN-LAST:event_jLabel1MouseClicked
 
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-
+        char value = ' ';
+        int index = Game.getIndexFromBoard(jLabel2.getName());
+        Game.Board b = g.getCurrentPlayer();
+        if (b == Game.Board.X) {
+            value = 'X';
+        } else if (b == Game.Board.O) {
+            value = 'O';
+        }
+        Record r1 = new Record(index, value);
+        System.out.println("index = " + r1.getIndex() + "value = " + r1.getValue());
+        record.add(r1);
         playing(jLabel2);
     }//GEN-LAST:event_jLabel2MouseClicked
 
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        char value = ' ';
+        int index = Game.getIndexFromBoard(jLabel3.getName());
+        Game.Board b = g.getCurrentPlayer();
+        if (b == Game.Board.X) {
+            value = 'X';
+        } else if (b == Game.Board.O) {
+            value = 'O';
+        }
+        Record r1 = new Record(index, value);
+        System.out.println("index = " + r1.getIndex() + "value = " + r1.getValue());
+        record.add(r1);
         playing(jLabel3);
+
     }//GEN-LAST:event_jLabel3MouseClicked
 
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        char value = ' ';
+        int index = Game.getIndexFromBoard(jLabel4.getName());
+        Game.Board b = g.getCurrentPlayer();
+        if (b == Game.Board.X) {
+            value = 'X';
+        } else if (b == Game.Board.O) {
+            value = 'O';
+        }
+        Record r1 = new Record(index, value);
+        System.out.println("index = " + r1.getIndex() + "value = " + r1.getValue());
+        record.add(r1);
         playing(jLabel4);
     }//GEN-LAST:event_jLabel4MouseClicked
 
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        char value = ' ';
+        int index = Game.getIndexFromBoard(jLabel5.getName());
+        Game.Board b = g.getCurrentPlayer();
+        if (b == Game.Board.X) {
+            value = 'X';
+        } else if (b == Game.Board.O) {
+            value = 'O';
+        }
+        Record r1 = new Record(index, value);
+        System.out.println("index = " + r1.getIndex() + "value = " + r1.getValue());
+        record.add(r1);
         playing(jLabel5);
     }//GEN-LAST:event_jLabel5MouseClicked
 
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        char value = ' ';
+        int index = Game.getIndexFromBoard(jLabel6.getName());
+        Game.Board b = g.getCurrentPlayer();
+        if (b == Game.Board.X) {
+            value = 'X';
+        } else if (b == Game.Board.O) {
+            value = 'O';
+        }
+        Record r1 = new Record(index, value);
+        System.out.println("index = " + r1.getIndex() + "value = " + r1.getValue());
+        record.add(r1);
         playing(jLabel6);
     }//GEN-LAST:event_jLabel6MouseClicked
 
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        char value = ' ';
+        int index = Game.getIndexFromBoard(jLabel8.getName());
+        Game.Board b = g.getCurrentPlayer();
+        if (b == Game.Board.X) {
+            value = 'X';
+        } else if (b == Game.Board.O) {
+            value = 'O';
+        }
+        Record r1 = new Record(index, value);
+        System.out.println("index = " + r1.getIndex() + "value = " + r1.getValue());
+        record.add(r1);
         playing(jLabel8);
 
     }//GEN-LAST:event_jLabel8MouseClicked
 
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        char value = ' ';
+        int index = Game.getIndexFromBoard(jLabel9.getName());
+        Game.Board b = g.getCurrentPlayer();
+        if (b == Game.Board.X) {
+            value = 'X';
+        } else if (b == Game.Board.O) {
+            value = 'O';
+        }
+        Record r1 = new Record(index, value);
+        System.out.println("index = " + r1.getIndex() + "value = " + r1.getValue());
+        record.add(r1);
         playing(jLabel9);
     }//GEN-LAST:event_jLabel9MouseClicked
 
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        char value = ' ';
+        int index = Game.getIndexFromBoard(jLabel7.getName());
+        Game.Board b = g.getCurrentPlayer();
+        if (b == Game.Board.X) {
+            value = 'X';
+        } else if (b == Game.Board.O) {
+            value = 'O';
+        }
+        Record r1 = new Record(index, value);
+        System.out.println("index = " + r1.getIndex() + "value = " + r1.getValue());
+        record.add(r1);
         playing(jLabel7);
     }//GEN-LAST:event_jLabel7MouseClicked
 
@@ -467,17 +751,7 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
 
     private void playing(JLabel label) {
 
-        char value = ' ';
         index = Game.getIndexFromBoard(label.getName());
-        Game.Board b =  g.getCurrentPlayer();
-        if(b == Game.Board.X ){
-             value = 'X';
-        }else if (b == Game.Board.O){
-            value = 'O';
-        }
-            Record r1 = new Record(index, value);
-            record.add(r1);
-            System.out.println("index = " + r1.getIndex() + "value = " + r1.getValue());
 
         if (g.setBoard(index, g.getCurrentPlayer())) {
             label.setText(g.getBoard(index).toString());
@@ -494,12 +768,17 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
                 oWins();
                 scorePlayerTwo += 1;
                 lscorePlayer2.setText(String.valueOf(scorePlayerTwo));
+                g.setCurrentPlayer(Game.Board.O);
             }
 
-        }
-        g.chooseAplayer(lTurn);
+            g.chooseAplayer(lTurn);
+            ReDraw();
+        } else {
 
-        ReDraw();
+            g.chooseAplayer(lTurn);
+            playRopot();
+            ReDraw();
+        }
     }
 
     /**
@@ -519,21 +798,25 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmMultiPlayer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSinglePlayer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmMultiPlayer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSinglePlayer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmMultiPlayer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSinglePlayer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmMultiPlayer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSinglePlayer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmMultiPlayer().setVisible(true);
+                new RecordJFrame().setVisible(true);
+             
+
             }
         });
     }
