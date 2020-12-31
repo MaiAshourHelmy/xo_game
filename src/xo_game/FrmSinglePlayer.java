@@ -5,6 +5,10 @@
  */
 package xo_game;
 
+import model.Record;
+import model.IntializeSocket;
+import model.Game;
+import model.Player;
 import java.awt.Color;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -100,15 +104,43 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
 
     }
 
+//    private void registerMovesInDb() {
+//        String index = "";
+//        String value = "";
+//        socket.getPs().println("game#" + Player.getUserName() + "#" + "computer#" + scorePlayerOne + "#" + scorePlayerTwo);
+//        for (int i = 0; i < record.size(); i++) {
+//            index += String.valueOf(record.get(i).getIndex());
+//            value += String.valueOf(record.get(i).getValue());
+//        }
+//        socket.getPs().println("insertRecord#" + index + "#" + value);
+//    }
     private void registerMovesInDb() {
-        String index = "";
-        String value = "";
-        socket.getPs().println("game#" + Player.getUserName() + "#" + "computer#" + scorePlayerOne + "#" + scorePlayerTwo);
-        for (int i = 0; i < record.size(); i++) {
-            index += String.valueOf(record.get(i).getIndex());
-            value += String.valueOf(record.get(i).getValue());
-        }
-        socket.getPs().println("insertRecord#" + index + "#" + value);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String index = "";
+                String value = "";
+//                            String userWinner, String userLoser, boolean isTied, String index, String value, boolean isRecord
+
+                for (int i = 0; i < record.size(); i++) {
+                    index += String.valueOf(record.get(i).getIndex());
+                    value += String.valueOf(record.get(i).getValue());
+                }
+
+                if (scorePlayerOne == 0 && scorePlayerTwo == 0) {
+                    socket.getPs().println("game#" + "null" + "#" + "null" + "#" + "true" + "#" + index + "#" + value + "#" + true);
+                }
+
+                if (scorePlayerOne > scorePlayerTwo) {
+                    socket.getPs().println("game#" + Player.getUserName() + "#" + "Computer" + "#" + "false" + "#" + index + "#" + value + "#" + true);
+                } else {
+                    socket.getPs().println("game#" + "Computer" + "#" + Player.getUserName() + "#" + "false" + "#" + index + "#" + value + "#" + true);
+                }
+
+//                socket.getPs().println("insertRecord#" + index + "#" + value);
+            }
+        }).start();
+
     }
 
     private void xWins() {
@@ -567,25 +599,29 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         resetLabels();
+        scorePlayerOne = 0;
+        scorePlayerTwo = 0;
     }//GEN-LAST:event_btnResetActionPerformed
 
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         System.exit(0);
+        scorePlayerOne = 0;
+        scorePlayerTwo = 0;
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void playing(JLabel label) {
         char value = ' ';
         index = Game.getIndexFromBoard(label.getName());
-        Game.Board b =  g.getCurrentPlayer();
-        if(b == Game.Board.X ){
-             value = 'X';
-        }else if (b == Game.Board.O){
+        Game.Board b = g.getCurrentPlayer();
+        if (b == Game.Board.X) {
+            value = 'X';
+        } else if (b == Game.Board.O) {
             value = 'O';
         }
-            Record r1 = new Record(index, value);
-            record.add(r1);
-            System.out.println("index = " + r1.getIndex() + "value = " + r1.getValue());
+        Record r1 = new Record(index, value);
+        record.add(r1);
+        System.out.println("index = " + r1.getIndex() + "value = " + r1.getValue());
         if (g.setBoard(index, g.getCurrentPlayer())) {
             label.setText(g.getBoard(index).toString());
         }

@@ -165,8 +165,8 @@ public class user_profile extends javax.swing.JFrame {
        // ImageIcon newIcon = new ImageIcon(getClass().getResource("/user-female.png"));
         // pp_label.setIcon(newIcon);
         
-        String imageLocation = "E:\\ITI\\Java\\XO Project\\XO_GAME" ;
-        pp_label.setIcon(new ImageIcon(imageLocation));
+//        String imageLocation = "E:\\ITI\\Java\\XO Project\\XO_GAME";
+//        pp_label.setIcon(new ImageIcon(imageLocation));
     }//GEN-LAST:event_camera_labelMouseClicked
 
     private void back_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_labelMouseClicked

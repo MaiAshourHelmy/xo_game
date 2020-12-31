@@ -1,5 +1,5 @@
 
-package xo_game;
+package model;
 
 
 public class Player {

@@ -68,17 +68,21 @@ public class ClientHandler extends Thread {
                     }
                     case "game": {
                         try {
-                           game.insertGame(signUpInput[1], signUpInput[2], Integer.parseInt(signUpInput[3]), Integer.parseInt(signUpInput[4]));
+//                            String userWinner, String userLoser, boolean isTied, String index, String value, boolean isRecord
+
+                           game.insertGame(signUpInput[1], signUpInput[2], signUpInput[3],signUpInput[4], signUpInput[5],Boolean.valueOf(signUpInput[6]));
+                            System.out.println();
                             System.out.println("hello");
                         } catch (SQLException ex) {
                             System.out.println("game " + ex.getMessage());
                         }
                         break;
                     }
-                    case "insertRecord":{
-                        game.insertRcord(signUpInput[1], signUpInput[2]);
-                        break;
-                    }case "returnRecord":{
+//                    case "insertRecord":{
+//                        game.insertRcord(signUpInput[1], signUpInput[2]);
+//                        break;
+//                    }
+                    case "returnRecord":{
                     System.out.println("selectRecord = " + game.selectRecord());
                       ps.println(game.selectRecord());
                         break;
@@ -88,8 +92,6 @@ public class ClientHandler extends Thread {
             } catch (IOException ex) {
                 System.out.println("2" + ex.getMessage());
                 return;
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
             }
         }
     }

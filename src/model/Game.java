@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package xo_game;
+package model;
 
 import java.util.Random;
 import javax.swing.JLabel;
@@ -14,16 +14,20 @@ import javax.swing.JLabel;
  */
 public class Game {
 
+    
     // creating class enum
     public enum Board {
         EMPTY, X, O
     };
 
+    
     private Board currentPlayer = Board.X;
 
+    
     // Declaration 2D arr from Board
     private Board[] board;
 
+    
     // Default Constructor
     public Game() {
         // Initialization 2D arr from Board
@@ -37,6 +41,7 @@ public class Game {
         }
     }
 
+    
     public void resetBoard() {
 
         // reset values of array
@@ -69,10 +74,12 @@ public class Game {
         return false;
     }
 
+    
     public Board getCurrentPlayer() {
         return currentPlayer;
     }
 
+    
     public void setCurrentPlayer(Board currentPlayer) {
         this.currentPlayer = currentPlayer;
     }
@@ -82,6 +89,7 @@ public class Game {
         return board[x];
     }
 
+    
     public void chooseAplayer(JLabel l) {
 
         if (currentPlayer == Board.X) {
@@ -95,6 +103,7 @@ public class Game {
 
     }
 
+    
     // set specific item from array
     public boolean setBoard(int x, Board b) {
 
@@ -107,13 +116,13 @@ public class Game {
         }
     }
 
+    
     public boolean indexIsEmptyOrNot(int x) {
 
         // check item of array empty or not
         return board[x] == Board.EMPTY;
         
     }
-
 
 
     public boolean hasWinner() {
@@ -126,8 +135,6 @@ public class Game {
                 || (board[0] != Board.EMPTY && board[0] == board[4] && board[0] == board[8])
                 || (board[2] != Board.EMPTY && board[2] == board[4] && board[2] == board[6]);
     }
-    
-    
     
 
     public static int getIndexFromBoard(String nameLabel) {
@@ -168,6 +175,7 @@ public class Game {
         return index;
     }
 
+    
     public int genRandmInt() {
         Random rand = new Random();
 

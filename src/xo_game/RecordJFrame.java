@@ -5,6 +5,10 @@
  */
 package xo_game;
 
+import model.Record;
+import model.IntializeSocket;
+import model.Game;
+import model.Player;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridLayout;

@@ -5,9 +5,11 @@
  */
 package xo_game;
 
+import model.IntializeSocket;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Player;
 
 /**
  *
@@ -253,6 +255,7 @@ public class LogIn extends javax.swing.JFrame {
         String password = password_txt_login.getText();
        
         System.out.println(userName + " " + " " + password + " "  );
+        
         //go to user Profile
         intializeSocket.getPs().println("logIn" + "#" + userName + "#" + password);
 
@@ -261,7 +264,9 @@ public class LogIn extends javax.swing.JFrame {
             System.out.println("replyMeg = " + replyMsg);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());        }
-        if (replyMsg.equals("1")) {
+        if (replyMsg.charAt(0) == '1') {
+            Player.setUserName(replyMsg.substring(1));
+            System.out.println(Player.getUserName());
             user_profile up = new user_profile();
             up.setVisible(true);
             this.setVisible(false);

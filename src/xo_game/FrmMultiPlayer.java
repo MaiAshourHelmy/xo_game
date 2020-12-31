@@ -5,6 +5,10 @@
  */
 package xo_game;
 
+import model.Record;
+import model.IntializeSocket;
+import model.Game;
+import model.Player;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;

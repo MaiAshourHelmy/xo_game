@@ -175,20 +175,22 @@ public class game_modes extends javax.swing.JFrame {
 
     private void play_button_userprofileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_play_button_userprofileActionPerformed
         //TODO add your handling code here:
-        //go to sign up form
-     
+        FrmSinglePlayer frmSinglePlayer = new FrmSinglePlayer();
+        frmSinglePlayer.setVisible(true);
+        this.setVisible(false);
+
     }//GEN-LAST:event_play_button_userprofileActionPerformed
 
     private void play_button_userprofile1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_play_button_userprofile1ActionPerformed
         //TODO add your handling code here:
         //go to sign up form
-     
+
     }//GEN-LAST:event_play_button_userprofile1ActionPerformed
 
     private void play_button_userprofile2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_play_button_userprofile2ActionPerformed
         //TODO add your handling code here:
         //go to sign up form
-  
+
     }//GEN-LAST:event_play_button_userprofile2ActionPerformed
 
     private void back_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_labelMouseClicked
