@@ -85,6 +85,9 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
             resetLabels();
         }
 
+        scorePlayerOne = 0;
+        scorePlayerTwo = 0;
+
     }
 
     private void resetLabels() {
@@ -104,16 +107,6 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
 
     }
 
-//    private void registerMovesInDb() {
-//        String index = "";
-//        String value = "";
-//        socket.getPs().println("game#" + Player.getUserName() + "#" + "computer#" + scorePlayerOne + "#" + scorePlayerTwo);
-//        for (int i = 0; i < record.size(); i++) {
-//            index += String.valueOf(record.get(i).getIndex());
-//            value += String.valueOf(record.get(i).getValue());
-//        }
-//        socket.getPs().println("insertRecord#" + index + "#" + value);
-//    }
     private void registerMovesInDb() {
         new Thread(new Runnable() {
             @Override
@@ -127,33 +120,36 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
                     value += String.valueOf(record.get(i).getValue());
                 }
 
-                if (scorePlayerOne == 0 && scorePlayerTwo == 0) {
+                System.out.println("is Full" + isFull);
+                if (isFull) {
                     socket.getPs().println("game#" + "null" + "#" + "null" + "#" + "true" + "#" + index + "#" + value + "#" + true);
-                }
-
-                if (scorePlayerOne > scorePlayerTwo) {
-                    socket.getPs().println("game#" + Player.getUserName() + "#" + "Computer" + "#" + "false" + "#" + index + "#" + value + "#" + true);
                 } else {
-                    socket.getPs().println("game#" + "Computer" + "#" + Player.getUserName() + "#" + "false" + "#" + index + "#" + value + "#" + true);
-                }
 
+                    if (scorePlayerOne > scorePlayerTwo) {
+                        socket.getPs().println("game#" + Player.getUserName() + "#" + "Computer" + "#" + "false" + "#" + index + "#" + value + "#" + true);
+                    } else {
+                        socket.getPs().println("game#" + "Computer" + "#" + Player.getUserName() + "#" + "false" + "#" + index + "#" + value + "#" + true);
+                    }
+                }
 //                socket.getPs().println("insertRecord#" + index + "#" + value);
             }
         }).start();
 
+        scorePlayerOne = 0;
+        scorePlayerTwo = 0;
+        lscorePlayer1.setText(String.valueOf(scorePlayerOne));
+        lscorePlayer2.setText(String.valueOf(scorePlayerTwo));
     }
 
     private void xWins() {
         JOptionPane.showMessageDialog(this, "X WINS", "Winner", JOptionPane.INFORMATION_MESSAGE);
         registerMovesInDb();
-        isFull = true;
         resetLabels();
     }
 
     private void oWins() {
         JOptionPane.showMessageDialog(this, "O WINS", "Winner", JOptionPane.INFORMATION_MESSAGE);
         registerMovesInDb();
-        isFull = true;
         resetLabels();
     }
 
@@ -640,6 +636,10 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
                 g.setCurrentPlayer(Game.Board.O);
             }
 
+            scorePlayerOne = 0;
+            scorePlayerTwo = 0;
+            lscorePlayer1.setText(String.valueOf(scorePlayerOne));
+            lscorePlayer2.setText(String.valueOf(scorePlayerTwo));
             g.chooseAplayer(lTurn);
             ReDraw();
         } else {

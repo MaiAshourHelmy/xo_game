@@ -101,9 +101,12 @@ public class GameUtils {
             if (!userLoser.equals("Computer") && !userLoser.equals("Player 2")) {
                 idLoser = returnId(userLoser);
             }
+            
+            System.out.println(idWinner);
+            System.out.println(idLoser);
 
-            insertPlayerGame(idGame, idWinner, idLoser);
-
+            insertPlayerGame(idGame, 2, 2);
+//
             if (isRecord) {
                 insertRcord(index, value, idGame);
             }
@@ -123,7 +126,7 @@ public class GameUtils {
         pst = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         pst.setInt(1, IDGame);
         pst.setInt(2, IDPlayer1);
-        pst.setInt(2, IDPlayer2);
+        pst.setInt(3, IDPlayer2);
 
         int rows = pst.executeUpdate();
 

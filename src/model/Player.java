@@ -1,13 +1,21 @@
-
 package model;
 
-
 public class Player {
-   private static String name;
-  private static String userName; 
-  private static int totalScore; 
+
+    private static int id;
+    private static String name;
+    private static String userName;
+    private static int totalScore;
 
     public Player() {
+    }
+
+    public static int getId() {
+        return id;
+    }
+
+    public static void setId(int id) {
+        Player.id = id;
     }
 
     public static String getName() {
@@ -33,5 +41,5 @@ public class Player {
     public static void setTotalScore(int totalScore) {
         Player.totalScore = totalScore;
     }
-     
+
 }
