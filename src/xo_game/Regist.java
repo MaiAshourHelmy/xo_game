@@ -34,6 +34,7 @@ import xo_game.Start;
 
 
 public class Regist extends javax.swing.JFrame implements Runnable {
+    
 
     IntializeSocket intializeSocket;
     String replyMsg = "1";
@@ -253,7 +254,7 @@ public class Regist extends javax.swing.JFrame implements Runnable {
         });
         jPanel3.add(show_password_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, -1, -1));
 
-        invisible_password_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-invisible-20.png"))); // NOI18N
+        invisible_password_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/invisible-20.png"))); // NOI18N
         invisible_password_label.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 invisible_password_labelMouseClicked(evt);
@@ -269,7 +270,7 @@ public class Regist extends javax.swing.JFrame implements Runnable {
         });
         jPanel3.add(show_password_label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, -1, -1));
 
-        invisible_password_label2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-invisible-20.png"))); // NOI18N
+        invisible_password_label2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/invisible-20.png"))); // NOI18N
         invisible_password_label2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 invisible_password_label2MouseClicked(evt);
@@ -335,6 +336,7 @@ public class Regist extends javax.swing.JFrame implements Runnable {
 
     private void back_label1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_label1MouseClicked
         // TODO add your handling code here:
+        Sounds.playSound("button1.wav");
         Start st = new Start();
         st.setVisible(true);
         this.setVisible(false);
@@ -342,7 +344,7 @@ public class Regist extends javax.swing.JFrame implements Runnable {
 
     private void invisible_password_label2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invisible_password_label2MouseClicked
         // TODO add your handling code here:
-
+       Sounds.playSound("Push-Sound.wav");
         show_password_label2.setVisible(true);
         invisible_password_label2.setVisible(false);
         confirm_password_txt_signup.setEchoChar((char)0);
@@ -351,6 +353,7 @@ public class Regist extends javax.swing.JFrame implements Runnable {
     private void show_password_label2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show_password_label2MouseClicked
         // TODO add your handling code here:
         //show password here
+        Sounds.playSound("Push-Sound.wav");
         invisible_password_label2.setVisible(true);
         show_password_label2.setVisible(false);
         confirm_password_txt_signup.setEchoChar('*');
@@ -358,7 +361,7 @@ public class Regist extends javax.swing.JFrame implements Runnable {
 
     private void invisible_password_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invisible_password_labelMouseClicked
         // TODO add your handling code here:
-
+        Sounds.playSound("Push-Sound.wav");
         show_password_label.setVisible(true);
         invisible_password_label.setVisible(false);
         password_txt_signup.setEchoChar((char)0);
@@ -367,6 +370,7 @@ public class Regist extends javax.swing.JFrame implements Runnable {
     private void show_password_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show_password_labelMouseClicked
         // TODO add your handling code here:
         //show password here
+        Sounds.playSound("Push-Sound.wav");
         invisible_password_label.setVisible(true);
         show_password_label.setVisible(false);
         password_txt_signup.setEchoChar('*');
@@ -430,6 +434,7 @@ public class Regist extends javax.swing.JFrame implements Runnable {
     private void reset_button_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reset_button_signupActionPerformed
         // TODO add your handling code here:
         //delete user information from the form
+        Sounds.playSound("buttonClick.wav");
         name_txt_signup.setText("");
         user_name_txt_signup.setText("");
         password_txt_signup.setText("");
@@ -438,6 +443,7 @@ public class Regist extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_reset_button_signupActionPerformed
 
     private void submit_button_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submit_button_signupActionPerformed
+        Sounds.playSound("buttonClick.wav");
         String name = name_txt_signup.getText();
         String user_name = user_name_txt_signup.getText();
         String password = password_txt_signup.getText();

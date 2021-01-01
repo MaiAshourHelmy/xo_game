@@ -16,6 +16,7 @@ public class user_profile extends javax.swing.JFrame {
     /**
      * Creates new form user_profile
      */
+   
     public user_profile() {
         initComponents();
         camera_label1.setVisible(false);
@@ -201,6 +202,7 @@ public class user_profile extends javax.swing.JFrame {
     private void play_button_userprofileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_play_button_userprofileActionPerformed
         //TODO add your handling code here:
         //go to sign up form
+        Sounds.playSound("buttonClick.wav");
         game_modes gm = new game_modes();
         gm.setVisible(true);
         this.setVisible(false);
@@ -209,11 +211,14 @@ public class user_profile extends javax.swing.JFrame {
 
     private void exit_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exit_labelMouseClicked
         // TODO add your handling code here:
+        Sounds.playSound("doorClose.wav");
         System.exit(0);
     }//GEN-LAST:event_exit_labelMouseClicked
 
     private void history_userprofileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_history_userprofileActionPerformed
         // TODO add your handling code here:
+        Sounds.playSound("buttonClick.wav");
+        
         History his = new History();
         his.setVisible(true);
     }//GEN-LAST:event_history_userprofileActionPerformed
@@ -221,7 +226,7 @@ public class user_profile extends javax.swing.JFrame {
     private void camera_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_camera_labelMouseClicked
         // TODO add your handling code here:
         
-  
+        Sounds.playSound("pen.wav");
         camera_label.setVisible(false);
         camera_label1.setVisible(true);
         String imageLocation = "E:\\Java Project\\xo_game\\src\\Images\\user-female.png" ;
@@ -231,6 +236,7 @@ public class user_profile extends javax.swing.JFrame {
 
     private void back_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_labelMouseClicked
         // TODO add your handling code here:
+        Sounds.playSound("button1.wav");
         LogIn login = new LogIn();
         login.setVisible(true);
         this.setVisible(false);
@@ -257,6 +263,7 @@ public class user_profile extends javax.swing.JFrame {
 
     private void camera_label1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_camera_label1MouseClicked
         // TODO add your handling code here:
+        Sounds.playSound("pen.wav");
         camera_label1.setVisible(false);
         camera_label.setVisible(true);
         String imageLocation = "E:\\ITI\\Java\\The Final Project\\xo_game\\src\\Images\\user_profile.png" ;

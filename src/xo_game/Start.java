@@ -8,10 +8,7 @@ package xo_game;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.LineUnavailableException;
+
 
 /**
  *
@@ -22,22 +19,12 @@ public class Start extends javax.swing.JFrame {
     /**
      * Creates new form Start
      */
-    private AudioInputStream clipNameAIS;
+  
 
-    private Clip clipNameClip;
 
     public Start() {
         initComponents();
-        try
-
-         {
-        clipNameAIS = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("sounds/button1.wav"));
-
-        clipNameClip = AudioSystem.getClip();
-
-        clipNameClip.open(clipNameAIS);
-
-        }catch(Exception e){System.out.println("Failure to load sound");}
+   
 
     }
 
@@ -194,14 +181,14 @@ public class Start extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exit_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exit_labelMouseClicked
-        // TODO add your handling code here:
+  
         System.exit(0);
     }//GEN-LAST:event_exit_labelMouseClicked
 
     private void log_in_button_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_log_in_button_startActionPerformed
         //TODO add your handling code here:
         //go to sign up form
-       
+        Sounds.playSound("buttonClick.wav");
         LogIn login = new LogIn();
         login.setVisible(true);
         this.setVisible(false);
@@ -211,11 +198,8 @@ public class Start extends javax.swing.JFrame {
     private void sign_up_button_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sign_up_button_startActionPerformed
         //TODO add your handling code here:
         //go to sign up form
-        clipNameClip.setFramePosition(0);
-
-        clipNameClip.start();
-
-       
+ 
+        Sounds.playSound("buttonClick.wav");
         Regist reg = new Regist();
         reg.setVisible(true);
         this.setVisible(false);
@@ -224,10 +208,8 @@ public class Start extends javax.swing.JFrame {
 
     private void about_us_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_about_us_buttonActionPerformed
         // TODO add your handling code here:
-          clipNameClip.setFramePosition(0);
-
-        clipNameClip.start();
-
+   
+        Sounds.playSound("buttonClick.wav");
         about_us au = new about_us();
         au.setVisible(true);
         this.setVisible(false);
@@ -237,11 +219,13 @@ public class Start extends javax.swing.JFrame {
     private void sign_up_button_startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sign_up_button_startMouseClicked
         // TODO add your handling code here:
        
+       
     }//GEN-LAST:event_sign_up_button_startMouseClicked
 
     /**
      * @param args the command line arguments
      */
+  
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

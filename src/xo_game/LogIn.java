@@ -17,6 +17,8 @@ import model.Player;
  * @author mai
  */
 public class LogIn extends javax.swing.JFrame {
+    
+     
 
     IntializeSocket intializeSocket;
     String replyMsg;
@@ -191,7 +193,7 @@ public class LogIn extends javax.swing.JFrame {
         });
         jPanel3.add(show_password_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, -1, -1));
 
-        invisible_password_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-invisible-20.png"))); // NOI18N
+        invisible_password_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/invisible-20.png"))); // NOI18N
         invisible_password_label.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 invisible_password_labelMouseClicked(evt);
@@ -241,6 +243,7 @@ public class LogIn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void log_in_button_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_log_in_button_loginActionPerformed
+        Sounds.playSound("buttonClick.wav");
         String userName = user_name_txt_login.getText();
         String password = password_txt_login.getText();
 
@@ -272,6 +275,7 @@ public class LogIn extends javax.swing.JFrame {
     private void sign_up_button_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sign_up_button_loginActionPerformed
         //TODO add your handling code here:
         //go to sign up form
+        Sounds.playSound("buttonClick.wav");
         Regist reg = new Regist();
         reg.setVisible(true);
         this.setVisible(false);
@@ -320,6 +324,7 @@ public class LogIn extends javax.swing.JFrame {
 
     private void back_label1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_label1MouseClicked
         // TODO add your handling code here:
+        Sounds.playSound("button1.wav");
         Start st = new Start();
         st.setVisible(true);
         this.setVisible(false);
@@ -328,6 +333,7 @@ public class LogIn extends javax.swing.JFrame {
     private void show_password_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show_password_labelMouseClicked
         // TODO add your handling code here:
         //show password here
+        Sounds.playSound("Push-Sound.wav");
         invisible_password_label.setVisible(true);
         show_password_label.setVisible(false);
         password_txt_login.setEchoChar('*');
@@ -336,7 +342,7 @@ public class LogIn extends javax.swing.JFrame {
 
     private void invisible_password_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invisible_password_labelMouseClicked
         // TODO add your handling code here:
-
+        Sounds.playSound("Push-Sound.wav");
         show_password_label.setVisible(true);
         invisible_password_label.setVisible(false);
         password_txt_login.setEchoChar((char)0);

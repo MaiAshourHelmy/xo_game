@@ -27,6 +27,7 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+  
     Game g = new Game();
     int index = 0;
     int scorePlayerOne = 0;
@@ -600,49 +601,56 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
 
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-
+        Sounds.playSound("game.wav");
         playing(jLabel1);
     }//GEN-LAST:event_jLabel1MouseClicked
 
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-
+        Sounds.playSound("game.wav");
         playing(jLabel2);
     }//GEN-LAST:event_jLabel2MouseClicked
 
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        Sounds.playSound("game.wav");
         playing(jLabel3);
     }//GEN-LAST:event_jLabel3MouseClicked
 
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        playing(jLabel4);
+         Sounds.playSound("game.wav");
+         playing(jLabel4);
     }//GEN-LAST:event_jLabel4MouseClicked
 
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        Sounds.playSound("game.wav");
         playing(jLabel5);
     }//GEN-LAST:event_jLabel5MouseClicked
 
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        Sounds.playSound("game.wav");
         playing(jLabel6);
     }//GEN-LAST:event_jLabel6MouseClicked
 
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        Sounds.playSound("game.wav");
         playing(jLabel8);
 
     }//GEN-LAST:event_jLabel8MouseClicked
 
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        Sounds.playSound("game.wav");
         playing(jLabel9);
     }//GEN-LAST:event_jLabel9MouseClicked
 
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        Sounds.playSound("game.wav");
         playing(jLabel7);
     }//GEN-LAST:event_jLabel7MouseClicked
 
@@ -654,6 +662,7 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
     }//GEN-LAST:event_exit_labelMouseClicked
 
     private void btnExit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit1ActionPerformed
+        Sounds.playSound("buttonClick.wav");
         game_modes gm =new game_modes();
         gm.setVisible(true);
         this.setVisible(false);
@@ -661,6 +670,7 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExit1ActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        Sounds.playSound("buttonClick.wav");
         resetLabels();
     }//GEN-LAST:event_btnResetActionPerformed
 

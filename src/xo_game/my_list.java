@@ -17,6 +17,7 @@ public class my_list extends javax.swing.JFrame {
     /**
      * Creates new form my_list
      */
+    Sounds s = new Sounds();
     public my_list() {
         initComponents();
     }
@@ -92,7 +93,8 @@ public class my_list extends javax.swing.JFrame {
 
     private void exit_label1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exit_label1MouseClicked
         // TODO add your handling code here:
-        System.exit(0);
+        s.playSound("doorClose.wav");
+        this.setVisible(false);
     }//GEN-LAST:event_exit_label1MouseClicked
 
     /**

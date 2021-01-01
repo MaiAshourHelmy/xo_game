@@ -17,6 +17,7 @@ public class History extends javax.swing.JFrame {
     /**
      * Creates new form History
      */
+   
     public History() {
         initComponents();
     }
@@ -154,6 +155,7 @@ public class History extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(237, 228, 232));
         jLabel3.setText("Game History");
 
+        jPanel5.setBackground(new java.awt.Color(237, 228, 232));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(74, 6, 37), 10));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
@@ -248,6 +250,7 @@ public class History extends javax.swing.JFrame {
 
     private void back_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_labelMouseClicked
         // TODO add your handling code here:
+        Sounds.playSound("button1.wav");
         user_profile up = new user_profile();
         up.setVisible(true);
         this.setVisible(false);
@@ -255,6 +258,7 @@ public class History extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        Sounds.playSound("buttonClick.wav");
         my_list list = new my_list();
         list.text_list();
         list.setVisible(true);

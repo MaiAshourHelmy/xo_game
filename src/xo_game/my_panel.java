@@ -18,6 +18,7 @@ public class my_panel extends javax.swing.JPanel implements ListCellRenderer<my_
     /**
      * Creates new form my_panel
      */
+    
     public my_panel() {
         initComponents();
     }
@@ -48,6 +49,11 @@ public class my_panel extends javax.swing.JPanel implements ListCellRenderer<my_
         record.setForeground(new java.awt.Color(120, 0, 46));
         record.setText("Record");
         record.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 10));
+        record.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recordActionPerformed(evt);
+            }
+        });
 
         player2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         player2.setForeground(new java.awt.Color(255, 255, 255));
@@ -141,6 +147,13 @@ public class my_panel extends javax.swing.JPanel implements ListCellRenderer<my_
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void recordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordActionPerformed
+        // TODO add your handling code here:
+        
+        Sounds.playSound("buttonClick.wav");
+        
+    }//GEN-LAST:event_recordActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

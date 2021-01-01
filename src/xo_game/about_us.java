@@ -14,6 +14,7 @@ public class about_us extends javax.swing.JFrame {
     /**
      * Creates new form about_us
      */
+    
     public about_us() {
         initComponents();
     }
@@ -86,6 +87,11 @@ public class about_us extends javax.swing.JFrame {
         jLabel1.setText("This is version 1.0 of the game.");
 
         exit_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-close-window-40.png"))); // NOI18N
+        exit_label.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exit_labelMouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -161,10 +167,16 @@ public class about_us extends javax.swing.JFrame {
 
     private void back_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_labelMouseClicked
         // TODO add your handling code here:
+        Sounds.playSound("button1.wav");
         Start st = new Start();
         st.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_back_labelMouseClicked
+
+    private void exit_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exit_labelMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_exit_labelMouseClicked
 
     /**
      * @param args the command line arguments
