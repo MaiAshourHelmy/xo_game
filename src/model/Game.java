@@ -95,10 +95,10 @@ public class Game {
         if (currentPlayer == Board.X) {
 
             currentPlayer = Board.O;
-            l.setText("Player 2 turn");
+            l.setText("O turn");
         } else {
             currentPlayer = Board.X;
-            l.setText("Player 1 turn");
+            l.setText("X turn");
         }
 
     }

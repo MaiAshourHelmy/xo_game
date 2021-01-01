@@ -58,7 +58,7 @@ public class ClientHandler extends Thread {
                     case "exist": {
                         utils.exist();
                         game.exist();
-                        return;
+                        break;
                     }
                     case "nameOfPlayer": {
                         String name = utils.returnPlayerName(signUpInput[1]);
@@ -119,6 +119,7 @@ public class ClientHandler extends Thread {
         }).start();
     }
 
+    
     private void logIn() {
         new Thread(new Runnable() {
 

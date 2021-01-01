@@ -47,8 +47,8 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
             nameOfPlayer1 = socket.getDis().readLine();
             System.out.println("nameOfPlayer1 = " + nameOfPlayer1);
             Player.setName(nameOfPlayer1);
-            lPlayer3.setText(Player.getName());
-            lPlayer1.setText("Computer");
+            lPlayer1.setText(Player.getName());
+            lPlayer3.setText("Robot");
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
@@ -83,10 +83,10 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "The match has been drawn !!!", "Match result", JOptionPane.INFORMATION_MESSAGE);
             isFull = true;
             resetLabels();
+            createDialogSaveRecord();
+//            scorePlayerOne = 0;
+//            scorePlayerTwo = 0;
         }
-
-        scorePlayerOne = 0;
-        scorePlayerTwo = 0;
 
     }
 
@@ -107,7 +107,7 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
 
     }
 
-    private void registerMovesInDb() {
+    private void registerMovesInDb(boolean isRecord) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -122,34 +122,41 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
 
                 System.out.println("is Full" + isFull);
                 if (isFull) {
-                    socket.getPs().println("game#" + "null" + "#" + "null" + "#" + "true" + "#" + index + "#" + value + "#" + true);
+                    socket.getPs().println("game#" + "" + "#" + "" + "#" + "true" + "#" + index + "#" + value + "#" + isRecord);
                 } else {
 
-                    if (scorePlayerOne > scorePlayerTwo) {
-                        socket.getPs().println("game#" + Player.getUserName() + "#" + "Computer" + "#" + "false" + "#" + index + "#" + value + "#" + true);
+                    System.out.println("S" + scorePlayerOne);
+                    System.out.println("S" + scorePlayerTwo);
+                    if (scorePlayerOne == 1) {
+                        System.out.println("playeeeeeeeeeeeeeeeeeeeeeer");
+                        socket.getPs().println("game#" + Player.getUserName() + "#" + "Robot" + "#" + "false" + "#" + index + "#" + value + "#" + isRecord);
                     } else {
-                        socket.getPs().println("game#" + "Computer" + "#" + Player.getUserName() + "#" + "false" + "#" + index + "#" + value + "#" + true);
+                        System.out.println("Roboooooooooooooooot");
+                        socket.getPs().println("game#" + "Robot" + "#" + Player.getUserName() + "#" + "false" + "#" + index + "#" + value + "#" + isRecord);
                     }
                 }
-//                socket.getPs().println("insertRecord#" + index + "#" + value);
+
+                record.removeAll(record);
+                System.out.println("size: " + record.size());
+
+                scorePlayerOne = 0;
+                scorePlayerTwo = 0;
             }
         }).start();
 
-        scorePlayerOne = 0;
-        scorePlayerTwo = 0;
-        lscorePlayer1.setText(String.valueOf(scorePlayerOne));
-        lscorePlayer2.setText(String.valueOf(scorePlayerTwo));
+//        scorePlayerOne = 0;
+//        scorePlayerTwo = 0;
     }
 
     private void xWins() {
         JOptionPane.showMessageDialog(this, "X WINS", "Winner", JOptionPane.INFORMATION_MESSAGE);
-        registerMovesInDb();
+//        createDialogSaveRecord();
         resetLabels();
     }
 
     private void oWins() {
         JOptionPane.showMessageDialog(this, "O WINS", "Winner", JOptionPane.INFORMATION_MESSAGE);
-        registerMovesInDb();
+//        createDialogSaveRecord();
         resetLabels();
     }
 
@@ -166,12 +173,14 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
             if (g.getCurrentPlayer().toString() == "X") {
                 xWins();
                 scorePlayerOne += 1;
-                lscorePlayer1.setText(String.valueOf(scorePlayerOne));
+
             } else {
                 oWins();
                 scorePlayerTwo += 1;
-                lscorePlayer2.setText(String.valueOf(scorePlayerTwo));
+                g.setCurrentPlayer(Game.Board.O);
             }
+            
+            createDialogSaveRecord();
         }
 
         g.chooseAplayer(lTurn);
@@ -312,12 +321,12 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
 
         lTurn.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lTurn.setForeground(new java.awt.Color(255, 255, 255));
-        lTurn.setText("player turn");
+        lTurn.setText("turn");
 
         lscorePlayer2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lscorePlayer2.setForeground(new java.awt.Color(255, 255, 255));
         lscorePlayer2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lscorePlayer2.setText("0");
+        lscorePlayer2.setText("o");
 
         lPlayer3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lPlayer3.setForeground(new java.awt.Color(255, 255, 255));
@@ -327,7 +336,7 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
         lscorePlayer1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lscorePlayer1.setForeground(new java.awt.Color(255, 255, 255));
         lscorePlayer1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lscorePlayer1.setText("0");
+        lscorePlayer1.setText("X");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -338,9 +347,9 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lPlayer3)
                     .addComponent(lscorePlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addGap(140, 140, 140)
                 .addComponent(lTurn)
-                .addGap(118, 118, 118)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lPlayer1)
                     .addComponent(lscorePlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -620,34 +629,42 @@ public class FrmSinglePlayer extends javax.swing.JFrame {
         System.out.println("index = " + r1.getIndex() + "value = " + r1.getValue());
         if (g.setBoard(index, g.getCurrentPlayer())) {
             label.setText(g.getBoard(index).toString());
-        }
 
-        if (g.hasWinner()) {
-            System.out.println("player " + g.getCurrentPlayer());
-            if (g.getCurrentPlayer().toString() == "X") {
-                xWins();
-                scorePlayerOne += 1;
-                lscorePlayer1.setText(String.valueOf(scorePlayerOne));
+            if (g.hasWinner()) {
+                System.out.println("player " + g.getCurrentPlayer());
+                if (g.getCurrentPlayer().toString() == "X") {
+                    xWins();
+                    scorePlayerOne += 1;
+
+                } else {
+                    oWins();
+                    scorePlayerTwo += 1;
+//                    g.setCurrentPlayer(Game.Board.O);
+                }
+                createDialogSaveRecord();
+
+                g.chooseAplayer(lTurn);
+                ReDraw();
 
             } else {
-                oWins();
-                scorePlayerTwo += 1;
-                lscorePlayer2.setText(String.valueOf(scorePlayerTwo));
-                g.setCurrentPlayer(Game.Board.O);
+
+                g.chooseAplayer(lTurn);
+                playRopot();
+                ReDraw();
             }
-
-            scorePlayerOne = 0;
-            scorePlayerTwo = 0;
-            lscorePlayer1.setText(String.valueOf(scorePlayerOne));
-            lscorePlayer2.setText(String.valueOf(scorePlayerTwo));
-            g.chooseAplayer(lTurn);
-            ReDraw();
-        } else {
-
-            g.chooseAplayer(lTurn);
-            playRopot();
-            ReDraw();
         }
+    }
+
+    private void createDialogSaveRecord() {
+
+        int response = JOptionPane.showConfirmDialog(this, "Do you want record game?", "Confirm", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (response == JOptionPane.YES_OPTION) {
+            registerMovesInDb(true);
+        } else {
+            registerMovesInDb(false);
+        }
+
     }
 
     /**

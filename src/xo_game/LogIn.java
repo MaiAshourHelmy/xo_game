@@ -9,6 +9,7 @@ import model.IntializeSocket;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.Player;
 
 /**
@@ -253,26 +254,28 @@ public class LogIn extends javax.swing.JFrame {
     private void log_in_button_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_log_in_button_loginActionPerformed
         String userName = user_name_txt_login.getText();
         String password = password_txt_login.getText();
-       
-        System.out.println(userName + " " + " " + password + " "  );
-        
+
+        System.out.println(userName + " " + " " + password + " ");
+
         //go to user Profile
         intializeSocket.getPs().println("logIn" + "#" + userName + "#" + password);
 
         try {
             replyMsg = intializeSocket.getDis().readLine();
             System.out.println("replyMeg = " + replyMsg);
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());        }
-        if (replyMsg.charAt(0) == '1') {
-            Player.setUserName(replyMsg.substring(1));
-            System.out.println(Player.getUserName());
-            user_profile up = new user_profile();
-            up.setVisible(true);
-            this.setVisible(false);
-        } else {
-            System.out.println("error");
 
+            if (replyMsg.charAt(0) == '1') {
+                Player.setUserName(replyMsg.substring(1));
+                System.out.println(Player.getUserName());
+                user_profile up = new user_profile();
+                up.setVisible(true);
+                this.setVisible(false);
+            } else {
+                System.out.println("error");
+
+            }
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Connect to server");
         }
 
     }//GEN-LAST:event_log_in_button_loginActionPerformed

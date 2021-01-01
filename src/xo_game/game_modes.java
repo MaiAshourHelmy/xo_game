@@ -184,6 +184,9 @@ public class game_modes extends javax.swing.JFrame {
     private void play_button_userprofile1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_play_button_userprofile1ActionPerformed
         //TODO add your handling code here:
         //go to sign up form
+        FrmMultiPlayer frmMultiPlayer = new FrmMultiPlayer();
+        frmMultiPlayer.setVisible(true);
+        this.setVisible(false);
 
     }//GEN-LAST:event_play_button_userprofile1ActionPerformed
 

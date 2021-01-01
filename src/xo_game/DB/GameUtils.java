@@ -94,18 +94,20 @@ public class GameUtils {
 
             int idWinner = -1, idLoser = -1;
 
-            if (!userWinner.equals("Computer") && !userWinner.equals("Player 2")) {
+            if (!userWinner.equals("Robot") && !userWinner.equals("Player 2")) {
                 idWinner = returnId(userWinner);
             }
 
-            if (!userLoser.equals("Computer") && !userLoser.equals("Player 2")) {
+            if (!userLoser.equals("Robot") && !userLoser.equals("Player 2")) {
                 idLoser = returnId(userLoser);
             }
-            
-            System.out.println(idWinner);
-            System.out.println(idLoser);
 
-            insertPlayerGame(idGame, 2, 2);
+            if (idWinner != -1) {
+
+                insertPlayerGame(idGame, idWinner);
+            } else {
+                insertPlayerGame(idGame, idLoser);
+            }
 //
             if (isRecord) {
                 insertRcord(index, value, idGame);
@@ -127,6 +129,20 @@ public class GameUtils {
         pst.setInt(1, IDGame);
         pst.setInt(2, IDPlayer1);
         pst.setInt(3, IDPlayer2);
+
+        int rows = pst.executeUpdate();
+
+        System.out.println("rows = " + rows);
+    }
+
+    public void insertPlayerGame(int IDGame, int IDPlayer) throws SQLException {
+//        System.out.println(index + " " + value);
+        // SQL Insert
+        String sql = "INSERT INTO PLAYER_GAME (ID_GAME, ID_PLAYER1) VALUES (?,?)";
+
+        pst = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        pst.setInt(1, IDGame);
+        pst.setInt(2, IDPlayer);
 
         int rows = pst.executeUpdate();
 

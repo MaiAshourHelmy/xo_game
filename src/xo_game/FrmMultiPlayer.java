@@ -39,27 +39,69 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
         setNameLabels();
         socket = new IntializeSocket();
         record = new ArrayList<>();
-        lTurn.setText("Player one turn");
-        socket.getPs().println("nameOfPlayer#"+Player.getUserName());
-         try {
-          nameOfPlayer1 = socket.getDis().readLine();
+        lTurn.setText("X turn");
+        socket.getPs().println("nameOfPlayer#" + Player.getUserName());
+        try {
+            nameOfPlayer1 = socket.getDis().readLine();
             System.out.println("nameOfPlayer1 = " + nameOfPlayer1);
-           lPlayer3.setText(nameOfPlayer1);
-          // lPlayer2.setText("Player 2");
+            lPlayer3.setText(nameOfPlayer1);
+            // lPlayer2.setText("Player 2");
         } catch (IOException ex) {
             Logger.getLogger(FrmSinglePlayer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    private void registerMovesInDb() {
-        String index = "";
-        String value = "";
-        socket.getPs().println("game#" + Player.getUserName() + "#" + "computer#" + scorePlayerOne + "#" + scorePlayerTwo);
-        for (int i = 0; i < record.size(); i++) {
-            index += String.valueOf(record.get(i).getIndex());
-            value += String.valueOf(record.get(i).getValue());
-        }
-        socket.getPs().println("insertRecord#" + index + "#" + value);
+//    private void registerMovesInDb() {
+//        String index = "";
+//        String value = "";
+//        socket.getPs().println("game#" + Player.getUserName() + "#" + "computer#" + scorePlayerOne + "#" + scorePlayerTwo);
+//        for (int i = 0; i < record.size(); i++) {
+//            index += String.valueOf(record.get(i).getIndex());
+//            value += String.valueOf(record.get(i).getValue());
+//        }
+//        socket.getPs().println("insertRecord#" + index + "#" + value);
+//    }
+
+    private void registerMovesInDb(boolean isRecord) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String index = "";
+                String value = "";
+//                            String userWinner, String userLoser, boolean isTied, String index, String value, boolean isRecord
+
+                for (int i = 0; i < record.size(); i++) {
+                    index += String.valueOf(record.get(i).getIndex());
+                    value += String.valueOf(record.get(i).getValue());
+                }
+
+                System.out.println("is Full" + isFull);
+                if (isFull) {
+                    socket.getPs().println("game#" + "" + "#" + "" + "#" + "true" + "#" + index + "#" + value + "#" + isRecord);
+                } else {
+
+                    System.out.println("S" + scorePlayerOne);
+                    System.out.println("S" + scorePlayerTwo);
+                    if (scorePlayerOne == 1) {
+                        System.out.println("playeeeeeeeeeeeeeeeeeeeeeer");
+                        socket.getPs().println("game#" + Player.getUserName() + "#" + "Robot" + "#" + "false" + "#" + index + "#" + value + "#" + isRecord);
+                    } else {
+                        System.out.println("Roboooooooooooooooot");
+                        socket.getPs().println("game#" + "Robot" + "#" + Player.getUserName() + "#" + "false" + "#" + index + "#" + value + "#" + isRecord);
+                    }
+                }
+
+                record.removeAll(record);
+                System.out.println("size: " + record.size());
+
+                scorePlayerOne = 0;
+                scorePlayerTwo = 0;
+            }
+        }).start();
+
+//        scorePlayerOne = 0;
+//        scorePlayerTwo = 0;
     }
+
     private void setNameLabels() {
 
         jLabel1.setName("1");
@@ -111,13 +153,13 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
 
     private void xWins() {
         JOptionPane.showMessageDialog(this, "X WINS", "Winner", JOptionPane.INFORMATION_MESSAGE);
-        registerMovesInDb();
+        createDialogSaveRecord();
         resetLabels();
     }
 
     private void oWins() {
         JOptionPane.showMessageDialog(this, "O WINS", "Winner", JOptionPane.INFORMATION_MESSAGE);
-        registerMovesInDb();
+        createDialogSaveRecord();
         resetLabels();
     }
 
@@ -473,15 +515,15 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
 
         char value = ' ';
         index = Game.getIndexFromBoard(label.getName());
-        Game.Board b =  g.getCurrentPlayer();
-        if(b == Game.Board.X ){
-             value = 'X';
-        }else if (b == Game.Board.O){
+        Game.Board b = g.getCurrentPlayer();
+        if (b == Game.Board.X) {
+            value = 'X';
+        } else if (b == Game.Board.O) {
             value = 'O';
         }
-            Record r1 = new Record(index, value);
-            record.add(r1);
-            System.out.println("index = " + r1.getIndex() + "value = " + r1.getValue());
+        Record r1 = new Record(index, value);
+        record.add(r1);
+        System.out.println("index = " + r1.getIndex() + "value = " + r1.getValue());
 
         if (g.setBoard(index, g.getCurrentPlayer())) {
             label.setText(g.getBoard(index).toString());
@@ -492,18 +534,31 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
             if (g.getCurrentPlayer().toString() == "X") {
                 xWins();
                 scorePlayerOne += 1;
-                lscorePlayer1.setText(String.valueOf(scorePlayerOne));
+//                lscorePlayer1.setText(String.valueOf(scorePlayerOne));
 
             } else {
                 oWins();
                 scorePlayerTwo += 1;
-                lscorePlayer2.setText(String.valueOf(scorePlayerTwo));
+//                lscorePlayer2.setText(String.valueOf(scorePlayerTwo));
             }
 
         }
         g.chooseAplayer(lTurn);
 
         ReDraw();
+    }
+
+    
+    private void createDialogSaveRecord() {
+
+        int response = JOptionPane.showConfirmDialog(this, "Do you want record game?", "Confirm", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (response == JOptionPane.YES_OPTION) {
+            registerMovesInDb(true);
+        } else {
+            registerMovesInDb(false);
+        }
+
     }
 
     /**
