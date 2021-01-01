@@ -178,6 +178,7 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
         lscorePlayer2 = new javax.swing.JLabel();
         lPlayer3 = new javax.swing.JLabel();
         lscorePlayer1 = new javax.swing.JLabel();
+        exit_label = new javax.swing.JLabel();
         jPanelBoard = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -197,15 +198,14 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        btnReset = new javax.swing.JButton();
-        btnExit = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        btnExit1 = new javax.swing.JButton();
+        btnReset1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(186, 79, 84));
         setMinimumSize(new java.awt.Dimension(611, 388));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(611, 388));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(120, 0, 46));
@@ -221,7 +221,7 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
 
         lTurn.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lTurn.setForeground(new java.awt.Color(255, 255, 255));
-        lTurn.setText("player turn");
+        lTurn.setText(" Turn");
 
         lscorePlayer2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lscorePlayer2.setForeground(new java.awt.Color(255, 255, 255));
@@ -238,6 +238,13 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
         lscorePlayer1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lscorePlayer1.setText("0");
 
+        exit_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-close-window-40.png"))); // NOI18N
+        exit_label.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exit_labelMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -247,20 +254,24 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lPlayer3)
                     .addComponent(lscorePlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addGap(263, 263, 263)
                 .addComponent(lTurn)
-                .addGap(118, 118, 118)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lPlayer1)
-                    .addComponent(lscorePlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 279, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lscorePlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lPlayer1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(exit_label))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(22, 22, 22)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lPlayer1)
                             .addComponent(lPlayer3))
@@ -268,13 +279,15 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lscorePlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lscorePlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(lTurn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addComponent(exit_label))
+                .addContainerGap(12, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lTurn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, -1));
 
         jPanelBoard.setBackground(new java.awt.Color(255, 255, 255));
         jPanelBoard.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -284,8 +297,10 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Bodoni MT Poster Compressed", 1, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Bodoni MT Poster Compressed", 1, 120)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(127, 186, 51));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 10));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
@@ -299,8 +314,10 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         jPanel4.setLayout(new java.awt.BorderLayout());
 
-        jLabel2.setFont(new java.awt.Font("Bodoni MT Poster Compressed", 1, 48)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Bodoni MT Poster Compressed", 1, 120)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(122, 181, 148));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 10));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
@@ -314,8 +331,10 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         jPanel5.setLayout(new java.awt.BorderLayout());
 
-        jLabel3.setFont(new java.awt.Font("Bodoni MT Poster Compressed", 1, 48)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Bodoni MT Poster Compressed", 1, 120)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(189, 32, 51));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 10));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
@@ -329,8 +348,10 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         jPanel6.setLayout(new java.awt.BorderLayout());
 
-        jLabel4.setFont(new java.awt.Font("Bodoni MT Poster Compressed", 1, 48)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Bodoni MT Poster Compressed", 1, 120)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(105, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 10));
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
@@ -344,8 +365,10 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
         jPanel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         jPanel7.setLayout(new java.awt.BorderLayout());
 
-        jLabel5.setFont(new java.awt.Font("Bodoni MT Poster Compressed", 1, 48)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Bodoni MT Poster Compressed", 1, 120)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(162, 72, 126));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 10));
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
@@ -359,8 +382,10 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
         jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         jPanel8.setLayout(new java.awt.BorderLayout());
 
-        jLabel6.setFont(new java.awt.Font("Bodoni MT Poster Compressed", 1, 48)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Bodoni MT Poster Compressed", 1, 120)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(168, 162, 48));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 10));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
@@ -374,8 +399,10 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
         jPanel9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         jPanel9.setLayout(new java.awt.BorderLayout());
 
-        jLabel7.setFont(new java.awt.Font("Bodoni MT Poster Compressed", 1, 48)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Bodoni MT Poster Compressed", 1, 120)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(78, 121, 185));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 10));
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel7MouseClicked(evt);
@@ -389,8 +416,10 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
         jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         jPanel10.setLayout(new java.awt.BorderLayout());
 
-        jLabel8.setFont(new java.awt.Font("Bodoni MT Poster Compressed", 1, 48)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Bodoni MT Poster Compressed", 1, 120)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(193, 24, 23));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 10));
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel8MouseClicked(evt);
@@ -404,8 +433,10 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
         jPanel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         jPanel11.setLayout(new java.awt.BorderLayout());
 
-        jLabel9.setFont(new java.awt.Font("Bodoni MT Poster Compressed", 1, 48)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Bodoni MT Poster Compressed", 1, 120)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(224, 124, 42));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 10));
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel9MouseClicked(evt);
@@ -415,39 +446,52 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
 
         jPanelBoard.add(jPanel11);
 
-        getContentPane().add(jPanelBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 410, 210));
+        getContentPane().add(jPanelBoard, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 820, 420));
 
-        btnReset.setText("Restart");
-        btnReset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResetActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, 130, 30));
-
-        btnExit.setText("Exit");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, 150, 30));
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(186, 79, 84));
         jPanel3.setForeground(new java.awt.Color(186, 79, 84));
+
+        btnExit1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        btnExit1.setForeground(new java.awt.Color(120, 0, 46));
+        btnExit1.setText("Back");
+        btnExit1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 20));
+        btnExit1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExit1ActionPerformed(evt);
+            }
+        });
+
+        btnReset1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        btnReset1.setForeground(new java.awt.Color(120, 0, 46));
+        btnReset1.setText("Restart");
+        btnReset1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 20));
+        btnReset1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReset1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addComponent(btnExit1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(btnReset1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(189, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 290, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 460, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnExit1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReset1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 610, 290));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 890, 550));
 
         pack();
         setLocationRelativeTo(null);
@@ -502,14 +546,21 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel7MouseClicked
 
 
-    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-        resetLabels();
-    }//GEN-LAST:event_btnResetActionPerformed
 
-
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+    private void exit_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exit_labelMouseClicked
+        // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_btnExitActionPerformed
+    }//GEN-LAST:event_exit_labelMouseClicked
+
+    private void btnExit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit1ActionPerformed
+        game_modes gm =new game_modes();
+        gm.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnExit1ActionPerformed
+
+    private void btnReset1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReset1ActionPerformed
+        resetLabels();
+    }//GEN-LAST:event_btnReset1ActionPerformed
 
     private void playing(JLabel label) {
 
@@ -598,8 +649,9 @@ public class FrmMultiPlayer extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnExit1;
+    private javax.swing.JButton btnReset1;
+    private javax.swing.JLabel exit_label;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

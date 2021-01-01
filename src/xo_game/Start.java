@@ -5,6 +5,14 @@
  */
 package xo_game;
 
+import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.LineUnavailableException;
+
 /**
  *
  * @author mai
@@ -14,9 +22,23 @@ public class Start extends javax.swing.JFrame {
     /**
      * Creates new form Start
      */
+    private AudioInputStream clipNameAIS;
+
+    private Clip clipNameClip;
+
     public Start() {
         initComponents();
-        // Mai
+        try
+
+         {
+        clipNameAIS = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("sounds/button1.wav"));
+
+        clipNameClip = AudioSystem.getClip();
+
+        clipNameClip.open(clipNameAIS);
+
+        }catch(Exception e){System.out.println("Failure to load sound");}
+
     }
 
     /**
@@ -32,8 +54,8 @@ public class Start extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        exit_label = new javax.swing.JLabel();
         log_in_button_start = new javax.swing.JButton();
+        exit_label = new javax.swing.JLabel();
         sign_up_button_start = new javax.swing.JButton();
         about_us_button = new javax.swing.JButton();
 
@@ -51,44 +73,51 @@ public class Start extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(62, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addGap(57, 57, 57))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
+                .addGap(186, 186, 186)
                 .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(186, 79, 84));
 
-        exit_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-exit-sign-20.png"))); // NOI18N
-        exit_label.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                exit_labelMouseClicked(evt);
-            }
-        });
-
         log_in_button_start.setBackground(new java.awt.Color(255, 255, 255));
-        log_in_button_start.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        log_in_button_start.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
         log_in_button_start.setForeground(new java.awt.Color(120, 0, 46));
         log_in_button_start.setText("Log In");
-        log_in_button_start.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 10));
+        log_in_button_start.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 20));
         log_in_button_start.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 log_in_button_startActionPerformed(evt);
             }
         });
 
+        exit_label.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        exit_label.setForeground(new java.awt.Color(255, 255, 255));
+        exit_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-close-window-40.png"))); // NOI18N
+        exit_label.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exit_labelMouseClicked(evt);
+            }
+        });
+
         sign_up_button_start.setBackground(new java.awt.Color(255, 255, 255));
-        sign_up_button_start.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        sign_up_button_start.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
         sign_up_button_start.setForeground(new java.awt.Color(86, 0, 39));
         sign_up_button_start.setText("Sign Up");
-        sign_up_button_start.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 10));
+        sign_up_button_start.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 20));
+        sign_up_button_start.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sign_up_button_startMouseClicked(evt);
+            }
+        });
         sign_up_button_start.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sign_up_button_startActionPerformed(evt);
@@ -96,10 +125,10 @@ public class Start extends javax.swing.JFrame {
         });
 
         about_us_button.setBackground(new java.awt.Color(255, 255, 255));
-        about_us_button.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
-        about_us_button.setForeground(new java.awt.Color(86, 0, 39));
+        about_us_button.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
+        about_us_button.setForeground(new java.awt.Color(120, 0, 46));
         about_us_button.setText("About Us");
-        about_us_button.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 10));
+        about_us_button.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 20));
         about_us_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 about_us_buttonActionPerformed(evt);
@@ -110,28 +139,28 @@ public class Start extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(77, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(log_in_button_start, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(about_us_button, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+                    .addComponent(sign_up_button_start, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(exit_label))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(91, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(log_in_button_start, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(sign_up_button_start, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(about_us_button, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                .addContainerGap(91, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(exit_label, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(sign_up_button_start, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(log_in_button_start, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(about_us_button, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addComponent(exit_label, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addComponent(sign_up_button_start, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addComponent(log_in_button_start, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addComponent(about_us_button, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -139,17 +168,14 @@ public class Start extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -160,7 +186,7 @@ public class Start extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -175,6 +201,7 @@ public class Start extends javax.swing.JFrame {
     private void log_in_button_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_log_in_button_startActionPerformed
         //TODO add your handling code here:
         //go to sign up form
+       
         LogIn login = new LogIn();
         login.setVisible(true);
         this.setVisible(false);
@@ -184,17 +211,33 @@ public class Start extends javax.swing.JFrame {
     private void sign_up_button_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sign_up_button_startActionPerformed
         //TODO add your handling code here:
         //go to sign up form
+        clipNameClip.setFramePosition(0);
+
+        clipNameClip.start();
+
+       
         Regist reg = new Regist();
         reg.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_sign_up_button_startActionPerformed
 
     private void about_us_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_about_us_buttonActionPerformed
         // TODO add your handling code here:
+          clipNameClip.setFramePosition(0);
+
+        clipNameClip.start();
+
         about_us au = new about_us();
         au.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_about_us_buttonActionPerformed
+
+    private void sign_up_button_startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sign_up_button_startMouseClicked
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_sign_up_button_startMouseClicked
 
     /**
      * @param args the command line arguments
@@ -222,6 +265,7 @@ public class Start extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Start.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -230,6 +274,7 @@ public class Start extends javax.swing.JFrame {
             }
         });
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton about_us_button;

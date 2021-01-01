@@ -47,10 +47,8 @@ public class Regist extends javax.swing.JFrame implements Runnable {
             th = new Thread(this);
             th.start();
        
-        invisible_password_label.setVisible(false);
-        invisible_password_label1.setVisible(false);
-        password_txt_signup.setVisible(false);
-        confirm_password_txt_signup.setVisible(false);
+         show_password_label.setVisible(false);
+         show_password_label2.setVisible(false);
 
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -75,40 +73,39 @@ public class Regist extends javax.swing.JFrame implements Runnable {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        back_label = new javax.swing.JLabel();
+        back_label1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        exit_label = new javax.swing.JLabel();
         submit_button_signup = new javax.swing.JButton();
         reset_button_signup = new javax.swing.JButton();
         name_txt_signup = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
         user_name_txt_signup = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
-        create_password_text_signup = new javax.swing.JTextField();
-        confirm_password_text_signup = new javax.swing.JTextField();
         password_txt_signup = new javax.swing.JPasswordField();
-        jSeparator3 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
         confirm_password_txt_signup = new javax.swing.JPasswordField();
-        show_password_label = new javax.swing.JLabel();
-        invisible_password_label = new javax.swing.JLabel();
-        invisible_password_label1 = new javax.swing.JLabel();
-        show_password_label1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        exit_label = new javax.swing.JLabel();
+        show_password_label = new javax.swing.JLabel();
+        invisible_password_label = new javax.swing.JLabel();
+        show_password_label2 = new javax.swing.JLabel();
+        invisible_password_label2 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel2.setBackground(new java.awt.Color(120, 0, 46));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/circle-cropped.png"))); // NOI18N
 
-        back_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-back-arrow-20.png"))); // NOI18N
-        back_label.addMouseListener(new java.awt.event.MouseAdapter() {
+        back_label1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.png"))); // NOI18N
+        back_label1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                back_labelMouseClicked(evt);
+                back_label1MouseClicked(evt);
             }
         });
 
@@ -117,18 +114,18 @@ public class Regist extends javax.swing.JFrame implements Runnable {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(back_label)
+                .addComponent(back_label1)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(57, 57, 57)
                 .addComponent(jLabel4)
-                .addContainerGap())
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(back_label)
-                .addGap(35, 35, 35)
+                .addComponent(back_label1)
+                .addGap(83, 83, 83)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -136,44 +133,35 @@ public class Regist extends javax.swing.JFrame implements Runnable {
         jPanel3.setBackground(new java.awt.Color(186, 79, 84));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        exit_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-exit-sign-20.png"))); // NOI18N
-        exit_label.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                exit_labelMouseClicked(evt);
-            }
-        });
-        jPanel3.add(exit_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, -30, 20, 80));
-
         submit_button_signup.setBackground(new java.awt.Color(255, 255, 255));
-        submit_button_signup.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        submit_button_signup.setForeground(new java.awt.Color(86, 0, 39));
+        submit_button_signup.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
+        submit_button_signup.setForeground(new java.awt.Color(120, 0, 46));
         submit_button_signup.setText("Submit");
-        submit_button_signup.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(86, 0, 39), 10));
+        submit_button_signup.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 20));
         submit_button_signup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submit_button_signupActionPerformed(evt);
             }
         });
-        jPanel3.add(submit_button_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 130, 60));
+        jPanel3.add(submit_button_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 370, 130));
 
         reset_button_signup.setBackground(new java.awt.Color(255, 255, 255));
-        reset_button_signup.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        reset_button_signup.setForeground(new java.awt.Color(86, 0, 39));
+        reset_button_signup.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
+        reset_button_signup.setForeground(new java.awt.Color(120, 0, 46));
         reset_button_signup.setText("Reset");
-        reset_button_signup.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(86, 0, 39), 10));
+        reset_button_signup.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(120, 0, 46), 20));
         reset_button_signup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reset_button_signupActionPerformed(evt);
             }
         });
-        jPanel3.add(reset_button_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 130, 60));
+        jPanel3.add(reset_button_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 520, 370, 130));
 
         name_txt_signup.setBackground(new java.awt.Color(186, 79, 84));
         name_txt_signup.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        name_txt_signup.setForeground(new java.awt.Color(204, 204, 204));
-        name_txt_signup.setText("Enter Your Name");
+        name_txt_signup.setForeground(new java.awt.Color(255, 255, 255));
         name_txt_signup.setToolTipText("");
-        name_txt_signup.setBorder(null);
+        name_txt_signup.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         name_txt_signup.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 name_txt_signupFocusGained(evt);
@@ -182,15 +170,13 @@ public class Regist extends javax.swing.JFrame implements Runnable {
                 name_txt_signupFocusLost(evt);
             }
         });
-        jPanel3.add(name_txt_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 190, 30));
-        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 190, 10));
+        jPanel3.add(name_txt_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 190, 30));
 
         user_name_txt_signup.setBackground(new java.awt.Color(186, 79, 84));
         user_name_txt_signup.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        user_name_txt_signup.setForeground(new java.awt.Color(204, 204, 204));
-        user_name_txt_signup.setText("Enter Your Username");
+        user_name_txt_signup.setForeground(new java.awt.Color(255, 255, 255));
         user_name_txt_signup.setToolTipText("");
-        user_name_txt_signup.setBorder(null);
+        user_name_txt_signup.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         user_name_txt_signup.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 user_name_txt_signupFocusGained(evt);
@@ -199,53 +185,12 @@ public class Regist extends javax.swing.JFrame implements Runnable {
                 user_name_txt_signupFocusLost(evt);
             }
         });
-        jPanel3.add(user_name_txt_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 190, 30));
-        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 190, 10));
-
-        create_password_text_signup.setBackground(new java.awt.Color(186, 79, 84));
-        create_password_text_signup.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        create_password_text_signup.setForeground(new java.awt.Color(204, 204, 204));
-        create_password_text_signup.setText("Create Your Password");
-        create_password_text_signup.setBorder(null);
-        create_password_text_signup.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                create_password_text_signupFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                create_password_text_signupFocusLost(evt);
-            }
-        });
-        create_password_text_signup.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                create_password_text_signupActionPerformed(evt);
-            }
-        });
-        jPanel3.add(create_password_text_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 150, 30));
-
-        confirm_password_text_signup.setBackground(new java.awt.Color(186, 79, 84));
-        confirm_password_text_signup.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        confirm_password_text_signup.setForeground(new java.awt.Color(204, 204, 204));
-        confirm_password_text_signup.setText("Confirm Your Password");
-        confirm_password_text_signup.setBorder(null);
-        confirm_password_text_signup.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                confirm_password_text_signupFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                confirm_password_text_signupFocusLost(evt);
-            }
-        });
-        confirm_password_text_signup.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirm_password_text_signupActionPerformed(evt);
-            }
-        });
-        jPanel3.add(confirm_password_text_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 160, 30));
+        jPanel3.add(user_name_txt_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 190, 30));
 
         password_txt_signup.setBackground(new java.awt.Color(186, 79, 84));
         password_txt_signup.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        password_txt_signup.setForeground(new java.awt.Color(204, 204, 204));
-        password_txt_signup.setBorder(null);
+        password_txt_signup.setForeground(new java.awt.Color(255, 255, 255));
+        password_txt_signup.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         password_txt_signup.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 password_txt_signupFocusGained(evt);
@@ -254,14 +199,12 @@ public class Regist extends javax.swing.JFrame implements Runnable {
                 password_txt_signupFocusLost(evt);
             }
         });
-        jPanel3.add(password_txt_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 180, 30));
-        jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 190, 20));
-        jPanel3.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 190, 40));
+        jPanel3.add(password_txt_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 190, 30));
 
         confirm_password_txt_signup.setBackground(new java.awt.Color(186, 79, 84));
         confirm_password_txt_signup.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        confirm_password_txt_signup.setForeground(new java.awt.Color(204, 204, 204));
-        confirm_password_txt_signup.setBorder(null);
+        confirm_password_txt_signup.setForeground(new java.awt.Color(255, 255, 255));
+        confirm_password_txt_signup.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         confirm_password_txt_signup.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 confirm_password_txt_signupFocusGained(evt);
@@ -270,42 +213,10 @@ public class Regist extends javax.swing.JFrame implements Runnable {
                 confirm_password_txt_signupFocusLost(evt);
             }
         });
-        jPanel3.add(confirm_password_txt_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 180, 30));
-
-        show_password_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-eye-20.png"))); // NOI18N
-        show_password_label.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                show_password_labelMouseClicked(evt);
-            }
-        });
-        jPanel3.add(show_password_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, -1, -1));
-
-        invisible_password_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-invisible-20.png"))); // NOI18N
-        invisible_password_label.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                invisible_password_labelMouseClicked(evt);
-            }
-        });
-        jPanel3.add(invisible_password_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 20, 20));
-
-        invisible_password_label1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-invisible-20.png"))); // NOI18N
-        invisible_password_label1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                invisible_password_label1MouseClicked(evt);
-            }
-        });
-        jPanel3.add(invisible_password_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, -1, 20));
-
-        show_password_label1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-eye-20.png"))); // NOI18N
-        show_password_label1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                show_password_label1MouseClicked(evt);
-            }
-        });
-        jPanel3.add(show_password_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, -1, -1));
+        jPanel3.add(confirm_password_txt_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 190, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/name-tag-20.png"))); // NOI18N
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 20, 40));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 20, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lock.png"))); // NOI18N
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -313,7 +224,7 @@ public class Regist extends javax.swing.JFrame implements Runnable {
                 jLabel2MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 40, 30));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 20, 20));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/confirm_the_password-book-20.png"))); // NOI18N
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -321,10 +232,70 @@ public class Regist extends javax.swing.JFrame implements Runnable {
                 jLabel3MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 40, 30));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 20, 20));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/user.png"))); // NOI18N
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 20, 40));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 20, 20));
+
+        exit_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-close-window-40.png"))); // NOI18N
+        exit_label.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exit_labelMouseClicked(evt);
+            }
+        });
+        jPanel3.add(exit_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, 40, 40));
+
+        show_password_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-eye-20.png"))); // NOI18N
+        show_password_label.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                show_password_labelMouseClicked(evt);
+            }
+        });
+        jPanel3.add(show_password_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, -1, -1));
+
+        invisible_password_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-invisible-20.png"))); // NOI18N
+        invisible_password_label.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                invisible_password_labelMouseClicked(evt);
+            }
+        });
+        jPanel3.add(invisible_password_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, 20, 20));
+
+        show_password_label2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-eye-20.png"))); // NOI18N
+        show_password_label2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                show_password_label2MouseClicked(evt);
+            }
+        });
+        jPanel3.add(show_password_label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, -1, -1));
+
+        invisible_password_label2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-invisible-20.png"))); // NOI18N
+        invisible_password_label2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                invisible_password_label2MouseClicked(evt);
+            }
+        });
+        jPanel3.add(invisible_password_label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, 20, 20));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Confirm Password");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 220, 20));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Name");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 70, 20));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Username");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 120, 20));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Password");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 120, 20));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -338,7 +309,7 @@ public class Regist extends javax.swing.JFrame implements Runnable {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -353,25 +324,124 @@ public class Regist extends javax.swing.JFrame implements Runnable {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void back_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_labelMouseClicked
+    @Override
+    public void run() {
+       
+    }
+
+
+    private void back_label1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_label1MouseClicked
         // TODO add your handling code here:
         Start st = new Start();
         st.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_back_labelMouseClicked
+    }//GEN-LAST:event_back_label1MouseClicked
+
+    private void invisible_password_label2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invisible_password_label2MouseClicked
+        // TODO add your handling code here:
+
+        show_password_label2.setVisible(true);
+        invisible_password_label2.setVisible(false);
+        confirm_password_txt_signup.setEchoChar((char)0);
+    }//GEN-LAST:event_invisible_password_label2MouseClicked
+
+    private void show_password_label2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show_password_label2MouseClicked
+        // TODO add your handling code here:
+        //show password here
+        invisible_password_label2.setVisible(true);
+        show_password_label2.setVisible(false);
+        confirm_password_txt_signup.setEchoChar('*');
+    }//GEN-LAST:event_show_password_label2MouseClicked
+
+    private void invisible_password_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invisible_password_labelMouseClicked
+        // TODO add your handling code here:
+
+        show_password_label.setVisible(true);
+        invisible_password_label.setVisible(false);
+        password_txt_signup.setEchoChar((char)0);
+    }//GEN-LAST:event_invisible_password_labelMouseClicked
+
+    private void show_password_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show_password_labelMouseClicked
+        // TODO add your handling code here:
+        //show password here
+        invisible_password_label.setVisible(true);
+        show_password_label.setVisible(false);
+        password_txt_signup.setEchoChar('*');
+    }//GEN-LAST:event_show_password_labelMouseClicked
 
     private void exit_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exit_labelMouseClicked
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_exit_labelMouseClicked
 
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void confirm_password_txt_signupFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirm_password_txt_signupFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confirm_password_txt_signupFocusLost
+
+    private void confirm_password_txt_signupFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirm_password_txt_signupFocusGained
+        // TODO add your handling code here:
+        if (confirm_password_txt_signup.getText().equals("password")) {
+            confirm_password_txt_signup.setText("");
+        }
+    }//GEN-LAST:event_confirm_password_txt_signupFocusGained
+
+    private void password_txt_signupFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_password_txt_signupFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_password_txt_signupFocusLost
+
+    private void password_txt_signupFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_password_txt_signupFocusGained
+        // TODO add your handling code here:
+        if (password_txt_signup.getText().equals("password")) {
+            password_txt_signup.setText("");
+        }
+    }//GEN-LAST:event_password_txt_signupFocusGained
+
+    private void user_name_txt_signupFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_user_name_txt_signupFocusLost
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_user_name_txt_signupFocusLost
+
+    private void user_name_txt_signupFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_user_name_txt_signupFocusGained
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_user_name_txt_signupFocusGained
+
+    private void name_txt_signupFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_name_txt_signupFocusLost
+        // TODO add your handling code here:
+     
+    }//GEN-LAST:event_name_txt_signupFocusLost
+
+    private void name_txt_signupFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_name_txt_signupFocusGained
+        // TODO add your handling code here:
+     
+    }//GEN-LAST:event_name_txt_signupFocusGained
+
+    private void reset_button_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reset_button_signupActionPerformed
+        // TODO add your handling code here:
+        //delete user information from the form
+        name_txt_signup.setText("");
+        user_name_txt_signup.setText("");
+        password_txt_signup.setText("");
+        confirm_password_txt_signup.setText("");
+
+    }//GEN-LAST:event_reset_button_signupActionPerformed
+
     private void submit_button_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submit_button_signupActionPerformed
         String name = name_txt_signup.getText();
         String user_name = user_name_txt_signup.getText();
         String password = password_txt_signup.getText();
-        String confirmPassword = String.valueOf(confirm_password_text_signup.getText());
+        String confirmPassword = String.valueOf(confirm_password_txt_signup.getText());
 
         if (name == "") {
             JOptionPane.showMessageDialog(null, " Name is Mandatory");
@@ -420,171 +490,7 @@ public class Regist extends javax.swing.JFrame implements Runnable {
 
         }
 
-
     }//GEN-LAST:event_submit_button_signupActionPerformed
-
-    @Override
-    public void run() {
-       
-    }
-
-
-    private void reset_button_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reset_button_signupActionPerformed
-        // TODO add your handling code here:
-        //delete user information from the form
-        name_txt_signup.setText("");
-        user_name_txt_signup.setText("");
-        password_txt_signup.setText("");
-        confirm_password_txt_signup.setText("");
-
-
-    }//GEN-LAST:event_reset_button_signupActionPerformed
-
-    private void name_txt_signupFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_name_txt_signupFocusGained
-        // TODO add your handling code here:
-        if (name_txt_signup.getText().equals("Enter Your Name")) {
-            name_txt_signup.setText("");
-
-        }
-    }//GEN-LAST:event_name_txt_signupFocusGained
-
-    private void name_txt_signupFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_name_txt_signupFocusLost
-        // TODO add your handling code here:
-        if (name_txt_signup.getText().equals("")) {
-            name_txt_signup.setText("Enter Your Name");
-
-        }
-    }//GEN-LAST:event_name_txt_signupFocusLost
-
-    private void user_name_txt_signupFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_user_name_txt_signupFocusGained
-        // TODO add your handling code here:
-        if (user_name_txt_signup.getText().equals("Enter Your Username")) {
-            user_name_txt_signup.setText("");
-
-        }
-
-    }//GEN-LAST:event_user_name_txt_signupFocusGained
-
-    private void user_name_txt_signupFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_user_name_txt_signupFocusLost
-        // TODO add your handling code here:
-        if (user_name_txt_signup.getText().equals("")) {
-            user_name_txt_signup.setText("Enter Your Username");
-
-        }
-    }//GEN-LAST:event_user_name_txt_signupFocusLost
-
-    private void password_txt_signupFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_password_txt_signupFocusGained
-        // TODO add your handling code here:
-        if (password_txt_signup.getText().equals("password")) {
-            password_txt_signup.setText("");
-        }
-
-    }//GEN-LAST:event_password_txt_signupFocusGained
-
-    private void password_txt_signupFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_password_txt_signupFocusLost
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_password_txt_signupFocusLost
-
-    private void confirm_password_txt_signupFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirm_password_txt_signupFocusGained
-        // TODO add your handling code here:
-        if (confirm_password_txt_signup.getText().equals("password")) {
-            confirm_password_txt_signup.setText("");
-        }
-
-    }//GEN-LAST:event_confirm_password_txt_signupFocusGained
-
-    private void confirm_password_txt_signupFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirm_password_txt_signupFocusLost
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_confirm_password_txt_signupFocusLost
-
-    private void show_password_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show_password_labelMouseClicked
-        // TODO add your handling code here:
-        //show password here
-        invisible_password_label.setVisible(true);
-        show_password_label.setVisible(false);
-        password_txt_signup.setEchoChar((char) 0);
-    }//GEN-LAST:event_show_password_labelMouseClicked
-
-    private void invisible_password_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invisible_password_labelMouseClicked
-        // TODO add your handling code here:
-
-        show_password_label.setVisible(true);
-        invisible_password_label.setVisible(false);
-        password_txt_signup.setEchoChar('*');
-
-    }//GEN-LAST:event_invisible_password_labelMouseClicked
-
-    private void invisible_password_label1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invisible_password_label1MouseClicked
-        // TODO add your handling code here:
-
-        show_password_label1.setVisible(true);
-        invisible_password_label1.setVisible(false);
-        confirm_password_txt_signup.setEchoChar('*');
-
-    }//GEN-LAST:event_invisible_password_label1MouseClicked
-
-    private void show_password_label1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show_password_label1MouseClicked
-        // TODO add your handling code here:
-        //show password here
-        invisible_password_label1.setVisible(true);
-        show_password_label1.setVisible(false);
-        confirm_password_txt_signup.setEchoChar((char) 0);
-    }//GEN-LAST:event_show_password_label1MouseClicked
-
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel2MouseClicked
-
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel3MouseClicked
-
-    private void create_password_text_signupFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_create_password_text_signupFocusGained
-        // TODO add your handling code here:
-        if (create_password_text_signup.getText().equals("Create Your Password")) {
-            create_password_text_signup.setText("");
-            password_txt_signup.setVisible(true);
-            create_password_text_signup.setVisible(false);
-
-        }
-    }//GEN-LAST:event_create_password_text_signupFocusGained
-
-    private void create_password_text_signupFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_create_password_text_signupFocusLost
-        // TODO add your handling code here:
-        if (create_password_text_signup.getText().equals("")) {
-            create_password_text_signup.setText("Create Your Password");
-
-        }
-    }//GEN-LAST:event_create_password_text_signupFocusLost
-
-    private void create_password_text_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_create_password_text_signupActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_create_password_text_signupActionPerformed
-
-    private void confirm_password_text_signupFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirm_password_text_signupFocusGained
-        // TODO add your handling code here:
-        if (confirm_password_text_signup.getText().equals("Confirm Your Password")) {
-            create_password_text_signup.setText("");
-            confirm_password_txt_signup.setVisible(true);
-            confirm_password_text_signup.setVisible(false);
-
-        }
-
-    }//GEN-LAST:event_confirm_password_text_signupFocusGained
-
-    private void confirm_password_text_signupFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confirm_password_text_signupFocusLost
-        // TODO add your handling code here:
-        if (confirm_password_text_signup.getText().equals("")) {
-            confirm_password_text_signup.setText("Confirm Your Password");
-
-        }
-    }//GEN-LAST:event_confirm_password_text_signupFocusLost
-
-    private void confirm_password_text_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirm_password_text_signupActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_confirm_password_text_signupActionPerformed
 
     /**
      * @param args the command line arguments
@@ -622,30 +528,28 @@ public class Regist extends javax.swing.JFrame implements Runnable {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel back_label;
-    private javax.swing.JTextField confirm_password_text_signup;
+    private javax.swing.JLabel back_label1;
     private javax.swing.JPasswordField confirm_password_txt_signup;
-    private javax.swing.JTextField create_password_text_signup;
     private javax.swing.JLabel exit_label;
     private javax.swing.JLabel invisible_password_label;
-    private javax.swing.JLabel invisible_password_label1;
+    private javax.swing.JLabel invisible_password_label2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextField name_txt_signup;
     private javax.swing.JPasswordField password_txt_signup;
     private javax.swing.JButton reset_button_signup;
     private javax.swing.JLabel show_password_label;
-    private javax.swing.JLabel show_password_label1;
+    private javax.swing.JLabel show_password_label2;
     private javax.swing.JButton submit_button_signup;
     private javax.swing.JTextField user_name_txt_signup;
     // End of variables declaration//GEN-END:variables
