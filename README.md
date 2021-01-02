@@ -15,7 +15,7 @@ A project that enables you to play TicTac.
   _________________________________________________________________________________________________________________________________________________
 ###### **What is TicTokGame?**
 
-TicTokGame is a desktop game to play the (x-o) game with its rules, We create it as a project in java course in ITI Intensive Training.
+TicTokGame is a desktop game to play the (x-o) game with its rules, We create it as a project in java course in ITI Intensive Training(Nov 2020 till Present).
 It's has a Server-side to do network stream between the client in an online mood and storing database and the client-side that have the three moods of playing.
 
 
