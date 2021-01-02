@@ -15,7 +15,7 @@ A project that enables you to play TicTac.
   _________________________________________________________________________________________________________________________________________________
 ###### **What is TicTokGame?**
 
-TicTokGame is a desktop game to play the (x-o) game with its rules, We create it as a project in java course in ITI professional scholarship Intake 41.
+TicTokGame is a desktop game to play the (x-o) game with its rules, We create it as a project in java course in ITI Intensive Training.
 It's has a Server-side to do network stream between the client in an online mood and storing database and the client-side that have the three moods of playing.
 
 
@@ -24,31 +24,32 @@ It's has a Server-side to do network stream between the client in an online mood
   * Server Application plays as an intermediary between every client app wants to play over a network, it receives all streams as and parsing it and edit the type to be suitable to receive by the other client or target client, then send it again.
   * have the database of players to enable them to log in and register and record the game in the database if the player asks to do that.
   * The UI has three screens.
-   * Frist one to turn on the server.
-   * second to show the online players, offline players and whos in-game now, and statistics of a number of the online and offline players.
-   * there allow registering a new players from the server.
+   * First one to play with the computer.
+   *Second to play with another player on the same machine. 
+   *Third to play with another player on different machines
+
 
    
    
 ###### **Client Side Application**
  * Client Application has several modes to enable players to play in all conditions and allow them to record the game if they want that.
  * Moods:
-  * Play with a computer: this is done with an Ai has a hard mood and easy mood.
+  * Play with a computer.
   * Two Players: this is to enable two-player to play local on one computer.
   * Play VA Network: this is playing over the network on different devices.
   
 ###### **How to use it?**
-If you want to play local or with the computer just run the client jar file 
+If you want to play local or with the computer just run the client  file 
 if you want to play over network:
  *connect database
  *start-server
  *enter the IP of the server
  *log in or register
- *chose one of the online plyers to play with 
+ 
  
  
  ###### **Tecgnologes uses in it.**
- * javafx.
+ * java.
  * Derby database.
  * io socket java.
 
