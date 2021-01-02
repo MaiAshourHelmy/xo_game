@@ -52,6 +52,12 @@ if you want to play over network:
  * java.
  * Derby database.
  * io socket java.
+ 
+ 
+ 
+  ###### **Tools and IDEs.**
+ * Netbeans.
+ * Online Database Scheme.
 
 
 
